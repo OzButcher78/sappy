@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sappy — playful tools for curious creators</title>
+  <meta name="description" content="Sappy is a collection of playful, smart tools and apps built with AI." />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Sappy</h1>
+      <p class="tagline">Playful tools for curious creators</p>
+      <p class="intro">
+        Sappy is a growing collection of smart, simple apps — built with AI,
+        designed to be useful, fun, and easy to use.
+      </p>
+
+      <div class="cta">
+        <a href="#" class="button primary">Explore projects</a>
+        <a href="#" class="button secondary">Coming soon</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="features">
+      <div class="container grid">
+        <div class="feature">
+          <h3>Simple</h3>
+          <p>Clear ideas, clean design, no unnecessary complexity.</p>
+        </div>
+        <div class="feature">
+          <h3>Smart</h3>
+          <p>AI-assisted tools that help, not overwhelm.</p>
+        </div>
+        <div class="feature">
+          <h3>Playful</h3>
+          <p>Learning and experimenting should feel enjoyable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <p class="muted">
+          New tools and experiments will appear here over time.
+        </p>
+
+        <ul class="project-list">
+          <li>📐 Maths worksheets & learning tools</li>
+          <li>🛠 Small utilities & generators</li>
+          <li>🧪 AI experiments & prototypes</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <p>© <span id="year"></span> Sappy.ch</p>
+      <p class="muted">Built in Switzerland 🇨🇭</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
