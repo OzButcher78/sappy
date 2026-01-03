@@ -15,23 +15,31 @@
 <body>
   <header class="hero">
     <div class="container">
+      <!-- Small language switcher (top right) -->
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="flag-btn" type="button" data-lang="en" aria-label="English" title="English">
+          🇬🇧
+        </button>
+        <button class="flag-btn" type="button" data-lang="de" aria-label="Deutsch" title="Deutsch">
+          🇨🇭
+        </button>
+      </div>
+
       <h1>Sappy</h1>
-      <p class="tagline">Playful tools for curious creators</p>
-      <p class="intro">
+      <p class="tagline" data-i18n="tagline">Playful tools for curious creators</p>
+      <p class="intro" data-i18n="intro">
         Sappy is a growing collection of smart, simple apps — built with AI,
         designed to be useful, fun, and easy to use.
       </p>
 
       <div class="cta">
-  <a href="https://maths-psi.vercel.app/" class="button primary" target="_blank" rel="noopener">
-    Mathe Meister
-  </a>
-  <a href="https://mathe-arbeitsblatt.vercel.app/" class="button primary" target="_blank" rel="noopener">
-    Mathe Arbeitsblätter
-  </a>
-</div>
-
-
+        <a href="https://maths-psi.vercel.app/" class="button primary" target="_blank" rel="noopener" data-i18n="btn1">
+          Mathe Meister
+        </a>
+        <a href="https://mathe-arbeitsblatt.vercel.app/" class="button primary" target="_blank" rel="noopener" data-i18n="btn2">
+          Mathe-Meister Arbeitsblätter
+        </a>
+      </div>
     </div>
   </header>
 
@@ -39,34 +47,35 @@
     <section class="features">
       <div class="container grid">
         <div class="feature">
-          <h3>Simple</h3>
-          <p>Clear ideas, clean design, no unnecessary complexity.</p>
+          <h3 data-i18n="f1_title">Simple</h3>
+          <p data-i18n="f1_text">Clear ideas, clean design, no unnecessary complexity.</p>
         </div>
         <div class="feature">
-          <h3>Smart</h3>
-          <p>AI-assisted tools that help, not overwhelm.</p>
+          <h3 data-i18n="f2_title">Smart</h3>
+          <p data-i18n="f2_text">AI-assisted tools that help, not overwhelm.</p>
         </div>
         <div class="feature">
-          <h3>Playful</h3>
-          <p>Learning and experimenting should feel enjoyable.</p>
+          <h3 data-i18n="f3_title">Playful</h3>
+          <p data-i18n="f3_text">Learning and experimenting should feel enjoyable.</p>
         </div>
       </div>
     </section>
 
     <section class="projects" id="projects">
       <div class="container">
-        <h2>Projects</h2>
-        <p class="muted">
+        <h2 data-i18n="projects_title">Projects</h2>
+        <p class="muted" data-i18n="projects_intro">
           New tools and experiments will appear here over time.
         </p>
 
         <ul class="project-list">
-      🗓 <strong>Kid Planner</strong> —
-    <a href="https://maths-psi.vercel.app/" target="_blank" rel="noopener">
-      playful planning tools for children
-    </a>
-  </li>
-</ul>
+          <li>
+            🗓 <strong data-i18n="kidplanner_title">Kid Planner</strong> —
+            <a href="https://maths-psi.vercel.app/" target="_blank" rel="noopener" data-i18n="kidplanner_desc">
+              playful planning tools for children
+            </a>
+          </li>
+        </ul>
 
       </div>
     </section>
@@ -75,12 +84,80 @@
   <footer>
     <div class="container footer">
       <p>© <span id="year"></span> Sappy.ch</p>
-      <p class="muted">Built in Switzerland 🇨🇭</p>
+      <p class="muted" data-i18n="footer">Built in Switzerland 🇨🇭</p>
     </div>
   </footer>
 
   <script>
+    // Keep year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Tiny i18n dictionary
+    const I18N = {
+      en: {
+        tagline: "Playful tools for curious creators",
+        intro: "Sappy is a growing collection of smart, simple apps — built with AI, designed to be useful, fun, and easy to use.",
+        btn1: "Mathe Meister",
+        btn2: "Mathe-Meister Worksheets",
+        f1_title: "Simple",
+        f1_text: "Clear ideas, clean design, no unnecessary complexity.",
+        f2_title: "Smart",
+        f2_text: "AI-assisted tools that help, not overwhelm.",
+        f3_title: "Playful",
+        f3_text: "Learning and experimenting should feel enjoyable.",
+        projects_title: "Projects",
+        projects_intro: "New tools and experiments will appear here over time.",
+        kidplanner_title: "Kid Planner",
+        kidplanner_desc: "playful planning tools for children",
+        footer: "Built in Switzerland 🇨🇭"
+      },
+      de: {
+        tagline: "Spielerische Tools für neugierige Köpfe",
+        intro: "Sappy ist eine wachsende Sammlung smarter, einfacher Apps — mit KI entwickelt, nützlich im Alltag, und mit Freude gestaltet.",
+        btn1: "Mathe Meister",
+        btn2: "Mathe-Meister Arbeitsblätter",
+        f1_title: "Einfach",
+        f1_text: "Klare Ideen, sauberes Design, ohne unnötige Komplexität.",
+        f2_title: "Smart",
+        f2_text: "KI-unterstützte Tools, die helfen – ohne zu überfordern.",
+        f3_title: "Spielerisch",
+        f3_text: "Lernen und Ausprobieren darf sich gut anfühlen.",
+        projects_title: "Projekte",
+        projects_intro: "Neue Tools und Experimente kommen laufend dazu.",
+        kidplanner_title: "Kid Planner",
+        kidplanner_desc: "spielerische Planungstools für Kinder",
+        footer: "Entwickelt in der Schweiz 🇨🇭"
+      }
+    };
+
+    function detectLang() {
+      const saved = localStorage.getItem("sappy_lang");
+      if (saved && (saved === "en" || saved === "de")) return saved;
+      const browser = (navigator.language || "en").toLowerCase();
+      return browser.startsWith("de") ? "de" : "en";
+    }
+
+    function setLang(lang) {
+      const dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang;
+      localStorage.setItem("sappy_lang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // active state
+      document.querySelectorAll(".flag-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll(".flag-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    setLang(detectLang());
   </script>
 </body>
 </html>
