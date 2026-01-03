@@ -143,3 +143,54 @@ footer {
     font-size: 2.6rem;
   }
 }
+/* --- Language switcher (small, unobtrusive) --- */
+.lang-switch {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  gap: 8px;
+}
+
+.hero .container {
+  position: relative; /* needed for top-right positioning */
+}
+
+.flag-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #2c315f;
+  background: rgba(23, 26, 46, 0.65);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.flag-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(26, 31, 63, 0.95);
+  border-color: rgba(108, 242, 194, 0.6);
+}
+
+.flag-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108, 242, 194, 0.15);
+}
+
+/* --- Stronger button hover (more prominent) --- */
+.button.primary {
+  background: var(--accent);
+  color: #0b0d18;
+  box-shadow: 0 10px 30px rgba(108, 242, 194, 0.08);
+}
+
+.button.primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 40px rgba(108, 242, 194, 0.20),
+    0 0 0 3px rgba(108, 242, 194, 0.18);
+}
