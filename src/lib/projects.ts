@@ -13,6 +13,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "pdrkalk",
+    title: "PDR Kalk",
+    subtitle: "Damage Assessment & Invoicing Software",
+    description:
+      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
+    image: "/images/pdrkalkapp.jpg",
+    tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
+    year: "2025",
+    url: "https://www.pdrkalk.com",
+    category: "app",
+    featured: true,
+  },
+  {
     slug: "masterfixpdr",
     title: "MasterFix PDR",
     subtitle: "Professional Dent Repair Platform",
@@ -158,12 +171,12 @@ export const projects: Project[] = [
   {
     slug: "homehuahin",
     title: "Home Hua Hin",
-    subtitle: "Real Estate Website",
+    subtitle: "Luxury Property Showcase",
     description:
-      "Property listing and real estate platform for the Hua Hin region in Thailand. Features property search, virtual tours, and agent contact system.",
+      "An elegant single-property website for a luxury two-residence tropical estate in Hua Hin, Thailand. Features a cinematic hero section, property gallery, location guide, and booking inquiry system — designed to sell privacy, space, and lifestyle.",
     image: "/images/homehuahin.jpg",
-    tags: ["Real Estate", "Listings", "International"],
-    year: "2022",
+    tags: ["Real Estate", "Web Design", "International"],
+    year: "2025",
     url: "https://www.homehuahin.com/",
     category: "web",
     featured: false,
