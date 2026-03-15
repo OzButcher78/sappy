@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-[family-name:var(--font-clash)] text-[clamp(2.5rem,10vw,3.5rem)] font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
+          className="font-[family-name:var(--font-clash)] text-[clamp(1.85rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
         >
           <span className="title-line block overflow-hidden">
             <span className="inline-block">Digital</span>
@@ -178,7 +178,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 opacity-0"
+        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 opacity-0 hidden sm:block"
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">
