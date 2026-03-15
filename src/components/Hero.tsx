@@ -126,7 +126,7 @@ export default function Hero() {
             alt="Sappy Logo"
             width={160}
             height={160}
-            className="relative drop-shadow-[0_0_40px_rgba(59,159,216,0.3)]"
+            className="relative h-24 w-24 drop-shadow-[0_0_40px_rgba(59,159,216,0.3)] sm:h-40 sm:w-40"
             priority
           />
         </div>
@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-[family-name:var(--font-clash)] text-5xl font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
+          className="font-[family-name:var(--font-clash)] text-[clamp(2.5rem,10vw,3.5rem)] font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
         >
           <span className="title-line block overflow-hidden">
             <span className="inline-block">Digital</span>
@@ -154,10 +154,10 @@ export default function Hero() {
         </p>
 
         {/* CTA */}
-        <div ref={ctaRef} className="mt-10 flex gap-4 opacity-0">
+        <div ref={ctaRef} className="mt-10 flex w-full flex-col items-center gap-3 opacity-0 sm:w-auto sm:flex-row sm:gap-4">
           <button
             onClick={scrollToWork}
-            className="magnetic-btn group relative overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_30px_rgba(59,159,216,0.3)]"
+            className="magnetic-btn group relative w-full overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_30px_rgba(59,159,216,0.3)] sm:w-auto"
           >
             <span className="relative z-10">View Work</span>
             <span className="absolute inset-0 -translate-x-full bg-[var(--accent-light)] transition-transform duration-500 group-hover:translate-x-0" />
@@ -168,7 +168,7 @@ export default function Hero() {
                 .querySelector("#contact")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="magnetic-btn rounded-full border border-[var(--border-color)] px-8 py-4 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            className="magnetic-btn w-full rounded-full border border-[var(--border-color)] px-8 py-4 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] sm:w-auto"
           >
             Get in Touch
           </button>

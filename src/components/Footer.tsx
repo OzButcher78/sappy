@@ -25,7 +25,7 @@ export default function Footer() {
           </Link>
 
           {/* Links */}
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
             {["Work", "Services", "About", "Contact"].map((link) => (
               <button
                 key={link}

@@ -182,7 +182,7 @@ export default function About() {
             </div>
 
             {/* Stats */}
-            <div className="mt-12 grid grid-cols-3 gap-6">
+            <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-6">
               {stats.map((stat) => (
                 <div key={stat.label} className="stat-item opacity-0">
                   <div className="font-[family-name:var(--font-clash)] text-3xl font-bold text-[var(--accent)] sm:text-4xl">

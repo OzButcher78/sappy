@@ -106,10 +106,10 @@ export default function Contact() {
             discuss how we can bring your digital vision to life.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <button
               onClick={openMail}
-              className="magnetic-btn group relative overflow-hidden rounded-full bg-[var(--accent)] px-10 py-5 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_40px_rgba(59,159,216,0.3)]"
+              className="magnetic-btn group relative overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_40px_rgba(59,159,216,0.3)] sm:px-10 sm:py-5"
             >
               <span className="relative z-10">Start a Conversation</span>
               <span className="absolute inset-0 -translate-x-full bg-[var(--accent-light)] transition-transform duration-500 group-hover:translate-x-0" />
@@ -117,7 +117,7 @@ export default function Contact() {
 
             <button
               onClick={openMail}
-              className="magnetic-btn flex items-center gap-2 rounded-full border border-[var(--border-color)] px-10 py-5 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="magnetic-btn flex items-center justify-center gap-2 rounded-full border border-[var(--border-color)] px-8 py-4 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] sm:px-10 sm:py-5"
             >
               Say Hello
             </button>
