@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone:*)",
+      "Bash(git pull:*)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(find /c/Users/Dieter/Sappy -type f -not -path */.git/* -not -path */.claude/* -not -path */node_modules/*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Read(//c/Users/Dieter/**)",
+      "Bash(npx create-next-app@latest sappy-temp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npx create-next-app@latest sappy-temp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(cp -r /c/Users/Dieter/sappy-temp/* /c/Users/Dieter/Sappy/)",
+      "Bash(cp -r /c/Users/Dieter/sappy-temp/.* /c/Users/Dieter/Sappy/)",
+      "Bash(rm -rf /c/Users/Dieter/sappy-temp)",
+      "Bash(cp /c/Users/Dieter/sappy-temp/package.json /c/Users/Dieter/Sappy/)",
+      "Bash(cp /c/Users/Dieter/sappy-temp/package-lock.json /c/Users/Dieter/Sappy/)",
+      "Bash(cp /c/Users/Dieter/sappy-temp/tsconfig.json /c/Users/Dieter/Sappy/)",
+      "Bash(cp /c/Users/Dieter/sappy-temp/postcss.config.mjs /c/Users/Dieter/Sappy/)",
+      "Bash(cp -r /c/Users/Dieter/sappy-temp/src /c/Users/Dieter/Sappy/)",
+      "Bash(cp -r /c/Users/Dieter/sappy-temp/public /c/Users/Dieter/Sappy/)",
+      "Bash(cp -r /c/Users/Dieter/sappy-temp/.gitignore /c/Users/Dieter/Sappy/)",
+      "Bash(npm install:*)",
+      "Bash(curl -sL \"https://api.fontsource.org/v1/fonts/clash-display/latin-400-normal.woff2\" -o /c/Users/Dieter/Sappy/src/fonts/ClashDisplay-Variable.woff2)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Dieter\\Sappy\\assets\\images",
+      "C:\\Users\\Dieter\\Sappy\\src\\app\\project",
+      "C:\\Users\\Dieter"
+    ]
+  }
+}

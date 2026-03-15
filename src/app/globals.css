@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border-color);
+  --font-sans: var(--font-cabinet);
+  --font-display: var(--font-clash);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #f0ede6;
+  --accent: #3b9fd8;
+  --accent-light: #5cb8eb;
+  --muted: #6b6b7b;
+  --surface: #141419;
+  --surface-elevated: #1c1c24;
+  --border-color: #2a2a35;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-cabinet), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* Smooth reveal animation base */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Magnetic button effect */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Text mask animation */
+.text-mask {
+  overflow: hidden;
+}
+
+.text-mask > * {
+  transform: translateY(100%);
+}
+
+/* Horizontal rule animation */
+.hr-animate {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* Project card hover */
+.project-card {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card .project-image {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Cursor follower */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: width 0.3s, height 0.3s, margin 0.3s;
+}
+
+.cursor-dot.expanded {
+  width: 48px;
+  height: 48px;
+  margin: -20px 0 0 -20px;
+  background: var(--accent-light);
+  opacity: 0.5;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--accent-light) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 40px rgba(59, 159, 216, 0.15);
+}
+
+/* Line decoration */
+.line-decoration {
+  position: relative;
+}
+
+.line-decoration::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line-decoration:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Shooting line shimmer */
+.line-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.line-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -140px;
+  width: 140px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 159, 216, 0.5),
+    rgba(92, 184, 235, 0.85),
+    rgba(59, 159, 216, 0.5),
+    transparent
+  );
+  animation: line-shoot 16s linear infinite;
+}
+
+@keyframes line-shoot {
+  0% {
+    left: -140px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Negative delays so each dart is already mid-travel on load */
+.line-shimmer-delay-1::after {
+  animation-delay: -5s;
+  animation-duration: 18s;
+}
+
+.line-shimmer-delay-2::after {
+  animation-delay: -10s;
+  animation-duration: 20s;
+}
+
+.line-shimmer-delay-3::after {
+  animation-delay: -3s;
+  animation-duration: 14s;
+}
+
+.line-shimmer-delay-4::after {
+  animation-delay: -8s;
+  animation-duration: 17s;
+}
+
+/* Logo pulsing glow */
+@keyframes logo-glow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes logo-glow-inner {
+  0%, 100% {
+    opacity: 0.06;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.1);
+  }
+}
+
+.animate-logo-glow {
+  animation: logo-glow 4s ease-in-out infinite;
+}
+
+.animate-logo-glow-inner {
+  animation: logo-glow-inner 4s ease-in-out infinite 1s;
+}
+
+/* Switzerland text glow */
+.switzerland-glow {
+  animation: swiss-glow 3s ease-in-out infinite;
+}
+
+@keyframes swiss-glow {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(255, 0, 0, 0.1), 0 0 8px rgba(59, 159, 216, 0.05);
+    color: var(--foreground);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.25), 0 0 20px rgba(255, 0, 0, 0.1);
+    color: #fff;
+  }
+}
+
+/* Service card spotlight */
+.service-card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 159, 216, 0.08),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-card-glow:hover::before {
+  opacity: 1;
+}
+
+.service-card-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 159, 216, 0.12),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(20px);
+}
+
+.service-card-glow:hover::after {
+  opacity: 1;
+}
+
+.service-card-glow > * {
+  position: relative;
+  z-index: 1;
+}
