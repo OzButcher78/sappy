@@ -12,43 +12,18 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // === Featured (in display order) ===
   {
-    slug: "pdrkalk",
+    slug: "pdrkalk-website",
     title: "PDR Kalk",
-    subtitle: "Damage Assessment & Invoicing Software",
+    subtitle: "Product Website for PDR Software",
     description:
-      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
-    image: "/images/pdrkalkapp.jpg",
-    tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
+      "Marketing website for PDR Kalk — a damage assessment and invoicing application for PDR technicians. Showcases features, screenshots, pricing, and multi-language support. Built to convert visitors into licensed users.",
+    image: "/images/pdrkalkweb.jpg",
+    tags: ["Web Design", "Product Page", "PDR"],
     year: "2025",
     url: "https://www.pdrkalk.com",
-    category: "app",
-    featured: true,
-  },
-  {
-    slug: "masterfixpdr",
-    title: "MasterFix PDR",
-    subtitle: "Professional Dent Repair Platform",
-    description:
-      "A comprehensive web platform for a professional paintless dent repair service. Built with modern web technologies featuring booking systems, service showcases, and customer management.",
-    image: "/images/masterfixpdr.jpg",
-    tags: ["Web Development", "Booking System", "CMS"],
-    year: "2024",
-    url: "https://masterfixpdr.se/",
     category: "web",
-    featured: true,
-  },
-  {
-    slug: "mathe-meister",
-    title: "Mathe Meister",
-    subtitle: "Educational Math App",
-    description:
-      "An interactive mathematics learning application designed to make math education engaging and accessible. Features adaptive difficulty, progress tracking, and gamified learning experiences.",
-    image: "/images/app-mathe-meister.jpg",
-    tags: ["Mobile App", "Education", "Gamification"],
-    year: "2024",
-    url: "https://meister.sappy.ch/",
-    category: "app",
     featured: true,
   },
   {
@@ -65,6 +40,45 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "pdrtools",
+    title: "Swiss PDR Tools",
+    subtitle: "E-Commerce Platform",
+    description:
+      "Specialized e-commerce platform for paintless dent repair tools and equipment. Features product catalog, secure checkout, and inventory management.",
+    image: "/images/pdrtools.jpg",
+    tags: ["E-Commerce", "Inventory", "Payments"],
+    year: "2023",
+    url: "https://www.pdrtools.com/",
+    category: "tool",
+    featured: true,
+  },
+  {
+    slug: "mathe-meister",
+    title: "Mathe Meister",
+    subtitle: "Educational Math App",
+    description:
+      "An interactive mathematics learning application designed to make math education engaging and accessible. Features adaptive difficulty, progress tracking, and gamified learning experiences.",
+    image: "/images/app-mathe-meister.jpg",
+    tags: ["Mobile App", "Education", "Gamification"],
+    year: "2024",
+    url: "https://meister.sappy.ch/",
+    category: "app",
+    featured: true,
+  },
+  {
+    slug: "pdrkalk",
+    title: "PDR Kalk",
+    subtitle: "Damage Assessment & Invoicing Software",
+    description:
+      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
+    image: "/images/pdrkalkapp.jpg",
+    tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
+    year: "2025",
+    url: "https://www.pdrkalk.com",
+    category: "app",
+    featured: true,
+  },
+  {
     slug: "autoausbeulen",
     title: "Autoausbeulen",
     subtitle: "Auto Body Repair Service",
@@ -77,6 +91,20 @@ export const projects: Project[] = [
     category: "web",
     featured: true,
   },
+  // === Non-featured ===
+  {
+    slug: "masterfixpdr",
+    title: "MasterFix PDR",
+    subtitle: "Professional Dent Repair Platform",
+    description:
+      "A comprehensive web platform for a professional paintless dent repair service. Built with modern web technologies featuring booking systems, service showcases, and customer management.",
+    image: "/images/masterfixpdr.jpg",
+    tags: ["Web Development", "Booking System", "CMS"],
+    year: "2024",
+    url: "https://masterfixpdr.se/",
+    category: "web",
+    featured: false,
+  },
   {
     slug: "clever-ausbeulen",
     title: "Clever-Ausbeulen",
@@ -88,7 +116,7 @@ export const projects: Project[] = [
     year: "2024",
     url: "https://cleverausbeulen.ch/",
     category: "web",
-    featured: true,
+    featured: false,
   },
   {
     slug: "dentag",
@@ -156,19 +184,6 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    slug: "pdrtools",
-    title: "Swiss PDR Tools",
-    subtitle: "E-Commerce Platform",
-    description:
-      "Specialized e-commerce platform for paintless dent repair tools and equipment. Features product catalog, secure checkout, and inventory management.",
-    image: "/images/pdrtools.jpg",
-    tags: ["E-Commerce", "Inventory", "Payments"],
-    year: "2023",
-    url: "https://www.pdrtools.com/",
-    category: "tool",
-    featured: false,
-  },
-  {
     slug: "homehuahin",
     title: "Home Hua Hin",
     subtitle: "Luxury Property Showcase",
@@ -192,7 +207,7 @@ export const projects: Project[] = [
     year: "2024",
     url: "https://www.whatdents.co.uk/",
     category: "web",
-    featured: true,
+    featured: false,
   },
   {
     slug: "erna",
