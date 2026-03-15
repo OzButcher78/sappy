@@ -6,6 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const openMail = () => {
+  const u = "dieterbalmer";
+  const d = "gmail.com";
+  window.location.href = `mailto:${u}@${d}`;
+};
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -101,20 +107,20 @@ export default function Contact() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="mailto:info@sappy.ch"
+            <button
+              onClick={openMail}
               className="magnetic-btn group relative overflow-hidden rounded-full bg-[var(--accent)] px-10 py-5 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_40px_rgba(59,159,216,0.3)]"
             >
               <span className="relative z-10">Start a Conversation</span>
               <span className="absolute inset-0 -translate-x-full bg-[var(--accent-light)] transition-transform duration-500 group-hover:translate-x-0" />
-            </a>
+            </button>
 
-            <a
-              href="mailto:info@sappy.ch"
+            <button
+              onClick={openMail}
               className="magnetic-btn flex items-center gap-2 rounded-full border border-[var(--border-color)] px-10 py-5 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
-              info@sappy.ch
-            </a>
+              Say Hello
+            </button>
           </div>
         </div>
 
@@ -141,12 +147,12 @@ export default function Contact() {
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
               Email
             </span>
-            <a
-              href="mailto:info@sappy.ch"
+            <button
+              onClick={openMail}
               className="mt-2 block text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
             >
-              info@sappy.ch
-            </a>
+              Get in Touch &rarr;
+            </button>
           </div>
 
           <div>
