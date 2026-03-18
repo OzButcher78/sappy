@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-[family-name:var(--font-clash)] text-[clamp(1.85rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
+          className="font-[family-name:var(--font-clash)] text-[clamp(1.5rem,7vw,2.75rem)] font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
           <span className="title-line block overflow-hidden">
             <span className="inline-block">Digital</span>
