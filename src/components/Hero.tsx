@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { useI18n } from "@/lib/i18n";
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -12,6 +13,7 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -118,15 +120,15 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* Logo */}
         <div ref={logoRef} className="relative mb-10 opacity-0">
-          {/* Pulsing glow layers */}
-          <div className="absolute inset-0 -m-8 animate-logo-glow rounded-full bg-[var(--accent)] opacity-[0.12] blur-[60px]" />
-          <div className="absolute inset-0 -m-4 animate-logo-glow-inner rounded-full bg-[var(--accent-light)] opacity-[0.08] blur-[40px]" />
+          {/* Pulsing glow layers — tight spread */}
+          <div className="absolute inset-0 -m-4 animate-logo-glow rounded-full bg-[var(--accent)] opacity-[0.08] blur-[30px]" />
+          <div className="absolute inset-0 -m-2 animate-logo-glow-inner rounded-full bg-[var(--accent-light)] opacity-[0.06] blur-[20px]" />
           <Image
             src="/images/logo-trans.png"
             alt="Sappy Logo"
             width={160}
             height={160}
-            className="relative h-24 w-24 drop-shadow-[0_0_40px_rgba(59,159,216,0.3)] sm:h-40 sm:w-40"
+            className="relative h-24 w-24 drop-shadow-[0_0_20px_rgba(59,159,216,0.2)] sm:h-40 sm:w-40"
             priority
           />
         </div>
@@ -137,10 +139,10 @@ export default function Hero() {
           className="font-[family-name:var(--font-clash)] text-[clamp(1.5rem,7vw,2.75rem)] font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
           <span className="title-line block overflow-hidden">
-            <span className="inline-block">Digital</span>
+            <span className="inline-block">{t.hero.titleLine1}</span>
           </span>
           <span className="title-line block overflow-hidden">
-            <span className="inline-block gradient-text">Craftsmanship</span>
+            <span className="inline-block gradient-text">{t.hero.titleLine2}</span>
           </span>
         </h1>
 
@@ -149,8 +151,7 @@ export default function Hero() {
           ref={subtitleRef}
           className="mt-8 max-w-xl text-lg leading-relaxed text-[var(--muted)] opacity-0 sm:text-xl"
         >
-          Digital portfolio of an IT enthusiast — from web design and web apps
-          to CAD modelling and 3D printing projects.
+          {t.hero.subtitle}
         </p>
 
         {/* CTA */}
@@ -159,7 +160,7 @@ export default function Hero() {
             onClick={scrollToWork}
             className="magnetic-btn group relative w-full overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_30px_rgba(59,159,216,0.3)] sm:w-auto"
           >
-            <span className="relative z-10">View Work</span>
+            <span className="relative z-10">{t.hero.viewWork}</span>
             <span className="absolute inset-0 -translate-x-full bg-[var(--accent-light)] transition-transform duration-500 group-hover:translate-x-0" />
           </button>
           <button
@@ -170,7 +171,7 @@ export default function Hero() {
             }
             className="magnetic-btn w-full rounded-full border border-[var(--border-color)] px-8 py-4 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] sm:w-auto"
           >
-            Get in Touch
+            {t.hero.getInTouch}
           </button>
         </div>
       </div>
@@ -182,7 +183,7 @@ export default function Hero() {
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">
-            Scroll
+            {t.hero.scroll}
           </span>
           <div className="relative h-12 w-px overflow-hidden bg-[var(--border-color)]">
             <div className="animate-scroll-line absolute left-0 top-0 h-1/2 w-full bg-[var(--accent)]" />

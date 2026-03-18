@@ -6,12 +6,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { projects, type Project } from "@/lib/projects";
+import { I18nProvider, useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const categories = ["all", "web", "app", "tool"] as const;
 
 export default function ProjectsPage() {
+  return (
+    <I18nProvider>
+      <ProjectsPageContent />
+    </I18nProvider>
+  );
+}
+
+function ProjectsPageContent() {
+  const { t } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -55,6 +65,13 @@ export default function ProjectsPage() {
     );
   }, [activeFilter]);
 
+  const categoryLabels: Record<string, string> = {
+    all: t.projectsPage.categories.all,
+    web: t.projectsPage.categories.web,
+    app: t.projectsPage.categories.app,
+    tool: t.projectsPage.categories.tool,
+  };
+
   return (
     <div ref={containerRef} className="min-h-screen">
       {/* Back navigation */}
@@ -72,7 +89,7 @@ export default function ProjectsPage() {
               strokeLinejoin="round"
             />
           </svg>
-          Back
+          {t.projectsPage.back}
         </Link>
       </div>
 
@@ -81,18 +98,17 @@ export default function ProjectsPage() {
         <div ref={headingRef} className="mx-auto max-w-[1400px] opacity-0">
           <div className="flex items-center gap-4">
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--accent)]">
-              Archive
+              {t.projectsPage.sectionLabel}
             </span>
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--muted)]">
-              {projects.length} Projects
+              {projects.length} {t.projectsPage.projectCount}
             </span>
           </div>
           <h1 className="mt-4 font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl">
-            All Projects
+            {t.projectsPage.heading}
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">
-            A complete collection of digital products, websites, and experiences
-            — each built with care and attention to detail.
+            {t.projectsPage.description}
           </p>
 
           {/* Filter tabs */}
@@ -107,7 +123,7 @@ export default function ProjectsPage() {
                     : "border-[var(--border-color)] text-[var(--muted)] hover:border-[var(--accent)]/50 hover:text-[var(--foreground)]"
                 }`}
               >
-                {cat}
+                {categoryLabels[cat]}
               </button>
             ))}
           </div>
@@ -129,7 +145,7 @@ export default function ProjectsPage() {
 
         {filtered.length === 0 && (
           <p className="mx-auto max-w-[1400px] pt-20 text-center text-[var(--muted)]">
-            No projects in this category yet.
+            {t.projectsPage.noProjects}
           </p>
         )}
       </div>
@@ -138,6 +154,11 @@ export default function ProjectsPage() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const { t, locale } = useI18n();
+  const subtitle = locale === "de" && project.subtitleDe ? project.subtitleDe : project.subtitle;
+  const description = locale === "de" && project.descriptionDe ? project.descriptionDe : project.description;
+  const tags = locale === "de" && project.tagsDe ? project.tagsDe : project.tags;
+
   return (
     <Link
       href={`/project/${project.slug}`}
@@ -181,16 +202,16 @@ function ProjectCard({ project }: { project: Project }) {
         <h3 className="font-[family-name:var(--font-clash)] text-xl font-semibold tracking-tight transition-colors group-hover:text-[var(--accent)]">
           {project.title}
         </h3>
-        <p className="mt-1 text-sm text-[var(--muted)]">{project.subtitle}</p>
+        <p className="mt-1 text-sm text-[var(--muted)]">{subtitle}</p>
 
         {/* Description preview */}
         <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--muted)]/70">
-          {project.description}
+          {description}
         </p>
 
         {/* Tags */}
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+          {tags.map((tag) => (
             <span
               key={tag}
               className="rounded-full bg-[var(--surface-elevated)] px-3 py-1 text-xs text-[var(--muted)]"
@@ -204,7 +225,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="mt-6 flex items-center justify-between">
           <div className="flex items-center gap-2 text-sm text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100">
             <span className="tracking-wider uppercase">
-              {project.url ? "View Live" : "View Details"}
+              {project.url ? t.projectsPage.viewLive : t.projectsPage.viewDetails}
             </span>
             <svg
               width="16"
@@ -224,11 +245,13 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
 
           {project.url && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                window.open(project.url, '_blank', 'noopener,noreferrer');
+              }}
               className="rounded-full border border-[var(--border-color)] p-2 text-[var(--muted)] opacity-0 transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] group-hover:opacity-100"
               title="Visit live site"
             >
@@ -241,7 +264,7 @@ function ProjectCard({ project }: { project: Project }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </button>
           )}
         </div>
       </div>

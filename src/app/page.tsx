@@ -1,12 +1,16 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { I18nProvider } from "@/lib/i18n";
 
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), {
   ssr: false,
 });
 const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
 const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
+const CircuitGrid = dynamic(() => import("@/components/CircuitGrid"), {
+  ssr: false,
+});
 const FeaturedProjects = dynamic(
   () => import("@/components/FeaturedProjects"),
   { ssr: false }
@@ -20,16 +24,19 @@ const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 
 export default function Home() {
   return (
-    <SmoothScroll>
-      <Navbar />
-      <main>
-        <Hero />
-        <FeaturedProjects />
-        <Services />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </SmoothScroll>
+    <I18nProvider>
+      <SmoothScroll>
+        <Navbar />
+        <main>
+          <CircuitGrid />
+          <Hero />
+          <FeaturedProjects />
+          <Services />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+      </SmoothScroll>
+    </I18nProvider>
   );
 }

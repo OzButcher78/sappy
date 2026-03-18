@@ -2,9 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
+
+  const footerLinks = [
+    { label: t.nav.work, id: "work" },
+    { label: t.nav.services, id: "services" },
+    { label: t.nav.about, id: "about" },
+    { label: t.nav.contact, id: "contact" },
+  ];
 
   return (
     <footer className="border-t border-[var(--border-color)] px-6 py-16 md:px-12">
@@ -26,17 +35,17 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-            {["Work", "Services", "About", "Contact"].map((link) => (
+            {footerLinks.map((link) => (
               <button
-                key={link}
+                key={link.id}
                 onClick={() =>
                   document
-                    .querySelector(`#${link.toLowerCase()}`)
+                    .querySelector(`#${link.id}`)
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="text-xs tracking-[0.2em] uppercase text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
-                {link}
+                {link.label}
               </button>
             ))}
           </div>
@@ -44,7 +53,7 @@ export default function Footer() {
           {/* Location & Copyright */}
           <div className="flex flex-col items-center gap-2 md:items-end">
             <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
-              <span>Made in</span>
+              <span>{t.footer.madeIn}</span>
               {/* Animated Swiss flag */}
               <span className="group relative inline-flex h-4 w-4 items-center justify-center rounded-sm bg-[#FF0000] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_12px_rgba(255,0,0,0.4)]">
                 <svg
@@ -58,10 +67,10 @@ export default function Footer() {
                   <rect x="1.5" y="4" width="7" height="2" rx="0.5" fill="white" />
                 </svg>
               </span>
-              <span>Switzerland</span>
+              <span>{t.footer.switzerland}</span>
             </div>
             <p className="text-xs text-[var(--muted)]">
-              &copy; {currentYear} Sappy. All rights reserved.
+              &copy; {currentYear} Sappy. {t.footer.allRightsReserved}
             </p>
           </div>
         </div>

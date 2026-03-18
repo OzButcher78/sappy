@@ -3,62 +3,13 @@
 import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const services = [
-  {
-    number: "01",
-    title: "Web Development",
-    description:
-      "High-performance websites and web applications built with modern frameworks. From corporate sites to complex platforms — responsive, fast, and beautifully crafted.",
-    capabilities: [
-      "HTML/CSS",
-      "Next.js & React",
-      "E-Commerce",
-      "CMS Integration",
-    ],
-  },
-  {
-    number: "02",
-    title: "Applications",
-    description:
-      "Design and development of a wide range of applications — from web apps and CMS plugins to OS-installable tools that automate and streamline business processes.",
-    capabilities: [
-      "Web Apps",
-      "CMS Plugins",
-      "Desktop Applications",
-      "Business Automation",
-    ],
-  },
-  {
-    number: "03",
-    title: "IT Support",
-    description:
-      "Reliable technical support covering web hosting, email setup, and integration of platforms like GitHub and Vercel. Ongoing maintenance and updates for commercial websites.",
-    capabilities: [
-      "Web Hosting",
-      "Email Setup",
-      "GitHub & Vercel Integration",
-      "Website Maintenance",
-    ],
-  },
-  {
-    number: "04",
-    title: "Design & Branding",
-    description:
-      "Visual identity systems and UI/UX design that communicate brand values with clarity. From logo design to complete digital brand experiences.",
-    capabilities: [
-      "UI/UX Design",
-      "Brand Identity",
-      "Design Systems",
-      "Prototyping",
-    ],
-  },
-];
-
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useI18n();
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -131,25 +82,24 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative px-6 py-32 md:px-12"
+      className="relative px-6 py-20 md:px-12"
     >
       <div className="mx-auto max-w-[1400px]">
         {/* Heading */}
         <div className="services-heading opacity-0">
           <div className="flex items-center gap-4">
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--accent)]">
-              02
+              {t.services.sectionNumber}
             </span>
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--muted)]">
-              What I Do
+              {t.services.sectionLabel}
             </span>
           </div>
           <h2 className="mt-4 font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Services
+            {t.services.heading}
           </h2>
           <p className="mt-4 max-w-lg text-lg text-[var(--muted)]">
-            End-to-end digital solutions — from initial concept to deployed
-            product, with Swiss precision at every step.
+            {t.services.description}
           </p>
         </div>
 
@@ -157,7 +107,7 @@ export default function Services() {
 
         {/* Services grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {services.map((service) => (
+          {t.services.items.map((service) => (
             <div
               key={service.number}
               onMouseMove={handleMouseMove}

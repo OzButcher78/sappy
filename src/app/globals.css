@@ -251,26 +251,85 @@ body {
   animation-duration: 17s;
 }
 
-/* Logo pulsing glow */
-@keyframes logo-glow {
-  0%, 100% {
-    opacity: 0.1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.2;
-    transform: scale(1.15);
+/* ============================================
+   Circuit Board Background
+   ============================================ */
+
+.circuit-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.circuit-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Faint base traces */
+.circuit-trace-line {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 0.5;
+  opacity: 0.05;
+}
+
+/* Sharp thin blue pulse traveling along each trace */
+.circuit-trace-pulse {
+  fill: none;
+  stroke: rgba(92, 184, 235, 0.9);
+  stroke-width: 0.3;
+  stroke-linecap: butt;
+  shape-rendering: crispEdges;
+  animation: trace-pulse-travel 10s linear infinite;
+}
+
+@keyframes trace-pulse-travel {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1000; }
+}
+
+/* Node dots at junctions */
+.circuit-node-dot {
+  fill: rgba(59, 159, 216, 0.25);
+  filter: drop-shadow(0 0 2px rgba(59, 159, 216, 0.3));
+  animation: node-glow 4s ease-in-out infinite;
+}
+
+@keyframes node-glow {
+  0%, 100% { opacity: 0.3; r: 2; }
+  50% { opacity: 0.8; r: 3; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .circuit-trace-pulse,
+  .circuit-node-dot {
+    animation: none;
   }
 }
 
-@keyframes logo-glow-inner {
+/* Logo pulsing glow — tight spread */
+@keyframes logo-glow {
   0%, 100% {
     opacity: 0.06;
     transform: scale(1);
   }
   50% {
     opacity: 0.14;
-    transform: scale(1.1);
+    transform: scale(1.08);
+  }
+}
+
+@keyframes logo-glow-inner {
+  0%, 100% {
+    opacity: 0.04;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(1.05);
   }
 }
 

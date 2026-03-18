@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { getFeaturedProjects } from "@/lib/projects";
+import { useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,7 @@ export default function FeaturedProjects() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const { t, locale } = useI18n();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -76,25 +78,24 @@ export default function FeaturedProjects() {
     <section
       ref={sectionRef}
       id="work"
-      className="relative px-6 py-32 md:px-12"
+      className="relative px-6 py-20 md:px-12"
     >
       <div className="mx-auto max-w-[1400px]">
         {/* Section heading */}
         <div ref={headingRef} className="mb-4 opacity-0">
           <div className="flex items-center gap-4">
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--accent)]">
-              01
+              {t.featuredProjects.sectionNumber}
             </span>
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--muted)]">
-              Selected Work
+              {t.featuredProjects.sectionLabel}
             </span>
           </div>
           <h2 className="mt-4 font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Featured Projects
+            {t.featuredProjects.heading}
           </h2>
           <p className="mt-4 max-w-lg text-lg text-[var(--muted)]">
-            A curated selection of digital products and experiences, each crafted
-            with precision and purpose.
+            {t.featuredProjects.description}
           </p>
         </div>
 
@@ -105,7 +106,11 @@ export default function FeaturedProjects() {
           ref={projectsRef}
           className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {featured.map((project) => (
+          {featured.map((project) => {
+            const subtitle = locale === 'de' && project.subtitleDe ? project.subtitleDe : project.subtitle;
+            const tags = locale === 'de' && project.tagsDe ? project.tagsDe : project.tags;
+
+            return (
             <Link
               key={project.slug}
               href={`/project/${project.slug}`}
@@ -142,12 +147,12 @@ export default function FeaturedProjects() {
                   {project.title}
                 </h3>
                 <p className="mt-1 text-sm text-[var(--muted)]">
-                  {project.subtitle}
+                  {subtitle}
                 </p>
 
                 {/* Tags */}
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {tags.map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full bg-[var(--surface-elevated)] px-3 py-1 text-xs text-[var(--muted)]"
@@ -160,7 +165,7 @@ export default function FeaturedProjects() {
                 {/* Arrow */}
                 <div className="mt-6 flex items-center gap-2 text-sm text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100">
                   <span className="tracking-wider uppercase">
-                    {project.url ? "View Live" : "View Project"}
+                    {project.url ? t.featuredProjects.viewLive : t.featuredProjects.viewProject}
                   </span>
                   <svg
                     width="16"
@@ -180,7 +185,8 @@ export default function FeaturedProjects() {
                 </div>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         {/* View all link */}
@@ -189,7 +195,7 @@ export default function FeaturedProjects() {
             href="/projects"
             className="group flex items-center gap-3 text-sm tracking-[0.2em] uppercase text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
           >
-            <span>View All Projects</span>
+            <span>{t.featuredProjects.viewAllProjects}</span>
             <svg
               width="20"
               height="20"

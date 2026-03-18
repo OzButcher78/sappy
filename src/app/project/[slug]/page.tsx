@@ -7,10 +7,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug, projects } from "@/lib/projects";
+import { I18nProvider, useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectPage() {
+  return (
+    <I18nProvider>
+      <ProjectPageContent />
+    </I18nProvider>
+  );
+}
+
+function ProjectPageContent() {
+  const { t, locale } = useI18n();
   const { slug } = useParams();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -94,12 +104,12 @@ export default function ProjectPage() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold">Project Not Found</h1>
+          <h1 className="text-4xl font-bold">{t.projectDetail.notFound}</h1>
           <Link
             href="/"
             className="mt-4 inline-block text-[var(--accent)] hover:underline"
           >
-            Back to Home
+            {t.projectDetail.backToHome}
           </Link>
         </div>
       </div>
@@ -123,7 +133,7 @@ export default function ProjectPage() {
               strokeLinejoin="round"
             />
           </svg>
-          Back
+          {t.projectDetail.back}
         </Link>
       </div>
 
@@ -145,7 +155,7 @@ export default function ProjectPage() {
         {/* Title */}
         <div className="project-title -mt-20 relative z-10 opacity-0">
           <div className="flex flex-wrap items-center gap-3">
-            {project.tags.map((tag) => (
+            {(locale === "de" && project.tagsDe ? project.tagsDe : project.tags).map((tag) => (
               <span
                 key={tag}
                 className="rounded-full border border-[var(--border-color)] px-3 py-1 text-xs tracking-wider text-[var(--accent)]"
@@ -158,7 +168,7 @@ export default function ProjectPage() {
             {project.title}
           </h1>
           <p className="mt-2 text-xl text-[var(--muted)]">
-            {project.subtitle}
+            {locale === "de" && project.subtitleDe ? project.subtitleDe : project.subtitle}
           </p>
         </div>
 
@@ -166,13 +176,13 @@ export default function ProjectPage() {
         <div className="project-meta mt-10 grid grid-cols-2 gap-6 opacity-0 sm:grid-cols-3">
           <div>
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-              Year
+              {t.projectDetail.year}
             </span>
             <p className="mt-1 text-[var(--foreground)]">{project.year}</p>
           </div>
           <div>
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-              Category
+              {t.projectDetail.category}
             </span>
             <p className="mt-1 capitalize text-[var(--foreground)]">
               {project.category}
@@ -181,11 +191,11 @@ export default function ProjectPage() {
           {project.url && (
             <div>
               <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-                Status
+                {t.projectDetail.status}
               </span>
               <p className="mt-1 flex items-center gap-2 text-[var(--foreground)]">
                 <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                Live
+                {t.projectDetail.live}
               </p>
             </div>
           )}
@@ -197,7 +207,7 @@ export default function ProjectPage() {
         {/* Description */}
         <div className="project-description opacity-0">
           <p className="text-xl leading-relaxed text-[var(--foreground)] sm:text-2xl">
-            {project.description}
+            {locale === "de" && project.descriptionDe ? project.descriptionDe : project.description}
           </p>
         </div>
 
@@ -219,7 +229,7 @@ export default function ProjectPage() {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </span>
 
-              <span className="relative">Visit Live Project</span>
+              <span className="relative">{t.projectDetail.visitLive}</span>
 
               {/* External link icon */}
               <svg
@@ -244,7 +254,7 @@ export default function ProjectPage() {
         {/* Next project */}
         <div className="next-project mt-32 mb-20 border-t border-[var(--border-color)] pt-12 opacity-0">
           <span className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">
-            Next Project
+            {t.projectDetail.nextProject}
           </span>
           <Link
             href={`/project/${nextProject.slug}`}

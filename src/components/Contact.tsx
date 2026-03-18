@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ const openMail = () => {
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -74,7 +76,7 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative px-6 py-32 md:px-12"
+      className="relative px-6 py-20 md:px-12"
     >
       {/* Background accent */}
       <div className="absolute bottom-0 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[var(--accent)] opacity-[0.02] blur-[150px]" />
@@ -84,10 +86,10 @@ export default function Contact() {
         <div className="contact-content opacity-0">
           <div className="flex items-center gap-4">
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--accent)]">
-              04
+              {t.contact.sectionNumber}
             </span>
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--muted)]">
-              Contact
+              {t.contact.sectionLabel}
             </span>
           </div>
         </div>
@@ -95,15 +97,14 @@ export default function Contact() {
         <div className="contact-hr line-shimmer line-shimmer-delay-3 my-12 h-px w-full origin-left bg-[var(--border-color)]" />
 
         <div className="contact-cta opacity-0">
-          <h2 className="font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-            Let&apos;s build
+          <h2 className="font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            {t.contact.headingLine1}
             <br />
-            <span className="gradient-text">something great.</span>
+            <span className="gradient-text">{t.contact.headingLine2}</span>
           </h2>
 
           <p className="mt-8 max-w-lg text-lg leading-relaxed text-[var(--muted)]">
-            Have a project in mind? I&apos;d love to hear about it. Let&apos;s
-            discuss how we can bring your digital vision to life.
+            {t.contact.description}
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -111,7 +112,7 @@ export default function Contact() {
               onClick={openMail}
               className="magnetic-btn group relative overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition-all hover:shadow-[0_0_40px_rgba(59,159,216,0.3)] sm:px-10 sm:py-5"
             >
-              <span className="relative z-10">Start a Conversation</span>
+              <span className="relative z-10">{t.contact.startConversation}</span>
               <span className="absolute inset-0 -translate-x-full bg-[var(--accent-light)] transition-transform duration-500 group-hover:translate-x-0" />
             </button>
 
@@ -119,7 +120,7 @@ export default function Contact() {
               onClick={openMail}
               className="magnetic-btn flex items-center justify-center gap-2 rounded-full border border-[var(--border-color)] px-8 py-4 text-sm tracking-widest uppercase text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] sm:px-10 sm:py-5"
             >
-              Say Hello
+              {t.contact.sayHello}
             </button>
           </div>
         </div>
@@ -128,7 +129,7 @@ export default function Contact() {
         <div className="contact-details mt-24 grid gap-8 opacity-0 sm:grid-cols-3">
           <div>
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-              Location
+              {t.contact.location}
             </span>
             <p className="mt-2 flex items-center gap-2 text-[var(--foreground)]">
               {/* Swiss flag */}
@@ -138,26 +139,26 @@ export default function Contact() {
                   <rect x="1.5" y="4" width="7" height="2" rx="0.5" fill="white" />
                 </svg>
               </span>
-              <span className="switzerland-glow">Switzerland</span>
+              <span className="switzerland-glow">{t.contact.switzerland}</span>
             </p>
-            <p className="text-sm text-[var(--muted)]">Available worldwide</p>
+            <p className="text-sm text-[var(--muted)]">{t.contact.availableWorldwide}</p>
           </div>
 
           <div>
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-              Email
+              {t.contact.email}
             </span>
             <button
               onClick={openMail}
               className="mt-2 block text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
             >
-              Get in Touch &rarr;
+              {t.contact.getInTouchArrow} &rarr;
             </button>
           </div>
 
           <div>
             <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-              Website
+              {t.contact.website}
             </span>
             <a
               href="https://sappy.ch"

@@ -1,20 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "8+", label: "Years Experience" },
-  { value: "100%", label: "Swiss Quality" },
-];
-
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useI18n();
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -55,6 +60,15 @@ export default function About() {
         }
       );
 
+      // Logo gentle float — same as hero
+      gsap.to(".about-logo-img", {
+        y: -10,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
       // Text content
       gsap.fromTo(
         ".about-text",
@@ -91,21 +105,21 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative px-6 py-32 md:px-12"
+      className="relative px-6 py-20 md:px-12"
     >
       <div className="mx-auto max-w-[1400px]">
         {/* Heading */}
         <div className="about-heading opacity-0">
           <div className="flex items-center gap-4">
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--accent)]">
-              03
+              {t.about.sectionNumber}
             </span>
             <span className="text-sm tracking-[0.3em] uppercase text-[var(--muted)]">
-              About
+              {t.about.sectionLabel}
             </span>
           </div>
           <h2 className="mt-4 font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            The Craftsman
+            {t.about.heading}
           </h2>
         </div>
 
@@ -113,63 +127,67 @@ export default function About() {
 
         <div className="grid gap-16 lg:grid-cols-5">
           {/* Image column */}
-          <div className="about-image opacity-0 lg:col-span-2">
-            <div className="relative overflow-hidden rounded-2xl border border-[var(--border-color)]">
-              <div className="aspect-[3/4] bg-[var(--surface)]">
-                <Image
-                  src="/images/logo-trans.png"
-                  alt="Sappy - Dieter Balmer"
-                  fill
-                  className="object-contain p-12"
-                />
+          <div className="about-image opacity-0 lg:col-span-2 lg:self-stretch">
+            <div
+              onMouseMove={handleMouseMove}
+              className="service-card-glow relative overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] transition-all duration-500 hover:border-[var(--accent)]/30 h-full"
+            >
+              <div className="relative z-[1] aspect-square lg:aspect-auto lg:h-full bg-transparent flex items-center justify-center">
+                <div className="relative flex items-center justify-center">
+                  {/* Pulsing glow layers — same style as hero */}
+                  <div className="absolute inset-0 -m-6 animate-logo-glow rounded-full bg-[var(--accent)] opacity-[0.08] blur-[30px]" />
+                  <div className="absolute inset-0 -m-3 animate-logo-glow-inner rounded-full bg-[var(--accent-light)] opacity-[0.06] blur-[20px]" />
+                  {/* Logo */}
+                  <Image
+                    src="/images/logo-trans.png"
+                    alt="Sappy - Dieter Balmer"
+                    width={160}
+                    height={160}
+                    className="about-logo-img relative z-10 h-28 w-28 sm:h-36 sm:w-36 transition-transform duration-300"
+                  />
+                </div>
               </div>
 
-              {/* Decorative accent */}
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-[var(--accent)] opacity-10 blur-2xl" />
+              {/* Quote at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 px-6 pb-5">
+                <p className="text-center text-sm italic text-[var(--muted)]">
+                  &ldquo;{t.about.quote}&rdquo;
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Text column */}
           <div className="about-text opacity-0 lg:col-span-3">
             <p className="text-2xl font-light leading-relaxed text-[var(--foreground)] sm:text-3xl">
-              I&apos;m Dieter Balmer — Swiss entrepreneur, automotive
-              enthusiast, and self-taught developer since 1988.
+              {t.about.intro}
             </p>
 
             <p className="mt-6 text-lg leading-relaxed text-[var(--muted)]">
-              I wrote my first lines of code at the age of 10 and never stopped.
-              That early curiosity evolved into a lifelong passion for building
-              things — from digital products and web platforms to hands-on
-              craftsmanship in the automotive world.
+              {t.about.paragraph1}
             </p>
 
             <p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">
-              Today I run my own businesses as a specialist in Paintless Dent
-              Repair (PDR) and as a designer and manufacturer of professional
-              PDR tools and accessories — sold to technicians around the world.
-              Alongside that, I continue to design and develop software, apps,
-              and digital experiences. Where others see different worlds, I see
-              the same drive — precision, problem-solving, and the pursuit of
-              a flawless finish.
+              {t.about.paragraph2}
             </p>
 
             {/* Tech stack */}
             <div className="mt-10">
               <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
-                Core Technologies
+                {t.about.coreTechnologies}
               </span>
               <div className="mt-4 flex flex-wrap gap-3">
                 {[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Node.js",
+                  "HTML",
+                  "CSS",
+                  "JavaScript",
                   "Python",
-                  "React Native",
                   "Tailwind CSS",
-                  "PostgreSQL",
-                  "AWS",
-                  "Vercel",
+                  "React",
+                  "Node.js",
+                  "SQL",
+                  "Next.js",
+                  "CMS",
                 ].map((tech) => (
                   <span
                     key={tech}
@@ -183,7 +201,7 @@ export default function About() {
 
             {/* Stats */}
             <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-6">
-              {stats.map((stat) => (
+              {t.about.stats.map((stat) => (
                 <div key={stat.label} className="stat-item opacity-0">
                   <div className="font-[family-name:var(--font-clash)] text-3xl font-bold text-[var(--accent)] sm:text-4xl">
                     {stat.value}

@@ -5,18 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
-
-const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+import { useI18n, type Locale } from "@/lib/i18n";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const { locale, setLocale, t } = useI18n();
+
+  const navLinks = [
+    { label: t.nav.work, href: "#work" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +46,10 @@ export default function Navbar() {
     }
   };
 
+  const toggleLocale = () => {
+    setLocale(locale === "en" ? "de" : "en");
+  };
+
   return (
     <>
       <nav
@@ -64,7 +70,7 @@ export default function Navbar() {
               className="object-contain"
             />
             <span className="text-lg font-medium tracking-wide font-[family-name:var(--font-clash)]">
-              SAPPY
+              SAPPY<span className="text-[var(--accent)]">.ch</span>
             </span>
           </Link>
 
@@ -72,18 +78,34 @@ export default function Navbar() {
           <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <button
-                key={link.label}
+                key={link.href}
                 onClick={() => scrollTo(link.href)}
                 className="line-decoration text-sm tracking-widest uppercase text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
                 {link.label}
               </button>
             ))}
+
+            {/* Language switcher */}
+            <button
+              onClick={toggleLocale}
+              className="flex items-center gap-1 text-xs tracking-widest uppercase text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+              aria-label="Switch language"
+            >
+              <span className={locale === "en" ? "text-[var(--accent)]" : ""}>
+                EN
+              </span>
+              <span className="text-[var(--border-color)]">/</span>
+              <span className={locale === "de" ? "text-[var(--accent)]" : ""}>
+                DE
+              </span>
+            </button>
+
             <button
               onClick={() => scrollTo("#contact")}
               className="rounded-full border border-[var(--accent)] px-6 py-2 text-sm tracking-widest uppercase text-[var(--accent)] transition-all hover:bg-[var(--accent)] hover:text-[var(--background)]"
             >
-              Let&apos;s Talk
+              {t.nav.letsTalk}
             </button>
           </div>
 
@@ -122,7 +144,7 @@ export default function Navbar() {
             <div className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
                 <motion.button
-                  key={link.label}
+                  key={link.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
@@ -141,7 +163,30 @@ export default function Navbar() {
                 onClick={() => scrollTo("#contact")}
                 className="mt-4 rounded-full border border-[var(--accent)] px-8 py-3 text-lg tracking-widest uppercase text-[var(--accent)]"
               >
-                Let&apos;s Talk
+                {t.nav.letsTalk}
+              </motion.button>
+
+              {/* Mobile language switcher */}
+              <motion.button
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+                onClick={toggleLocale}
+                className="mt-2 flex items-center gap-2 text-sm tracking-widest uppercase text-[var(--muted)]"
+                aria-label="Switch language"
+              >
+                <span
+                  className={locale === "en" ? "text-[var(--accent)]" : ""}
+                >
+                  EN
+                </span>
+                <span className="text-[var(--border-color)]">/</span>
+                <span
+                  className={locale === "de" ? "text-[var(--accent)]" : ""}
+                >
+                  DE
+                </span>
               </motion.button>
             </div>
           </motion.div>
