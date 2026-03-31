@@ -68,23 +68,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "weltmeister",
-    title: "Weltmeister",
-    subtitle: "Continent & Ocean Quiz for Kids",
-    subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
-    description:
-      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
-    descriptionDe:
-      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
-    image: "/images/weltmeister.jpg",
-    tags: ["Education", "Kids", "Quiz", "Free"],
-    tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
-    year: "2026",
-    url: "https://welt.sappy.ch",
-    category: "app",
-    featured: true,
-  },
-  {
     slug: "mathe-meister",
     title: "Mathe Meister",
     subtitle: "Educational Math App",
@@ -102,19 +85,19 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "pdrkalk",
-    title: "PDR Kalk",
-    subtitle: "Damage Assessment & Invoicing Software",
-    subtitleDe: "Schadenskalkulation & Rechnungssoftware",
+    slug: "weltmeister",
+    title: "Weltmeister",
+    subtitle: "Continent & Ocean Quiz for Kids",
+    subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
     description:
-      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
+      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
     descriptionDe:
-      "Eine Desktop-Anwendung für PDR-Techniker zur Digitalisierung von Hagel- und Parkschadenkalkulationen, Arbeitsberichten und Rechnungen. Mit Live-Berechnungen basierend auf Schweizer Versicherungsmatrizen, Sammelrechnungen, Fotointegration in PDF-Berichte, Adressverwaltung und Mehrsprachigkeit (DE/FR/IT/EN). Vollständig offline mit lokaler Datenspeicherung — kein Cloud-Abo nötig. Spart 30–60 Minuten pro Auftrag.",
-    image: "/images/pdrkalkapp.jpg",
-    tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
-    tagsDe: ["Desktop-App", "PDR", "Rechnungsstellung", "Schweizer Versicherung"],
-    year: "2025",
-    url: "https://www.pdrkalk.com",
+      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
+    image: "/images/weltmeister.jpg",
+    tags: ["Education", "Kids", "Quiz", "Free"],
+    tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
+    year: "2026",
+    url: "https://welt.sappy.ch",
     category: "app",
     featured: true,
   },
@@ -136,6 +119,23 @@ export const projects: Project[] = [
     featured: true,
   },
   // === Non-featured ===
+  {
+    slug: "pdrkalk",
+    title: "PDR Kalk",
+    subtitle: "Damage Assessment & Invoicing Software",
+    subtitleDe: "Schadenskalkulation & Rechnungssoftware",
+    description:
+      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
+    descriptionDe:
+      "Eine Desktop-Anwendung für PDR-Techniker zur Digitalisierung von Hagel- und Parkschadenkalkulationen, Arbeitsberichten und Rechnungen. Mit Live-Berechnungen basierend auf Schweizer Versicherungsmatrizen, Sammelrechnungen, Fotointegration in PDF-Berichte, Adressverwaltung und Mehrsprachigkeit (DE/FR/IT/EN). Vollständig offline mit lokaler Datenspeicherung — kein Cloud-Abo nötig. Spart 30–60 Minuten pro Auftrag.",
+    image: "/images/pdrkalkapp.jpg",
+    tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
+    tagsDe: ["Desktop-App", "PDR", "Rechnungsstellung", "Schweizer Versicherung"],
+    year: "2025",
+    url: "https://www.pdrkalk.com",
+    category: "app",
+    featured: false,
+  },
   {
     slug: "masterfixpdr",
     title: "MasterFix PDR",
