@@ -68,6 +68,23 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "weltmeister",
+    title: "Weltmeister",
+    subtitle: "Continent & Ocean Quiz for Kids",
+    subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
+    description:
+      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
+    descriptionDe:
+      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
+    image: "/images/weltmeister.jpg",
+    tags: ["Education", "Kids", "Quiz", "Free"],
+    tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
+    year: "2026",
+    url: "https://welt.sappy.ch",
+    category: "app",
+    featured: true,
+  },
+  {
     slug: "mathe-meister",
     title: "Mathe Meister",
     subtitle: "Educational Math App",
