@@ -168,7 +168,7 @@ export const projects: Project[] = [
     year: "2024",
     url: "https://cleverausbeulen.ch/",
     category: "web",
-    featured: false,
+    featured: true,
   },
   {
     slug: "dentag",
@@ -253,7 +253,7 @@ export const projects: Project[] = [
     year: "2023",
     url: "https://www.iasre-japan.com/",
     category: "web",
-    featured: false,
+    featured: true,
   },
   {
     slug: "homehuahin",
@@ -304,7 +304,7 @@ export const projects: Project[] = [
     year: "2022",
     url: "https://www.erna.hr/",
     category: "web",
-    featured: false,
+    featured: true,
   },
 ];
 
