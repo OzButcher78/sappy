@@ -52,9 +52,9 @@ export const projects: Project[] = [
     subtitle: "Japanese PDR Expo",
     subtitleDe: "Japanische PDR-Messe",
     description:
-      "Web platform for the Japanese edition of the international PDR expo. Featuring bilingual content, event schedules, and exhibitor management for the Asian market.",
+      "Web platform for the Japanese edition of the international PDR expo, with bilingual content and event schedules for the Asian market. Goes well beyond a marketing site: it handles ticket sales, sponsorship packages, and exhibitor and champion registrations end-to-end. The ticketing system issues attendees with wallet tickets that can be scanned at the event reception, while every item sold online — from sponsorship slots to add-ons — is tracked against a global stock count so nothing is oversold.",
     descriptionDe:
-      "Webplattform für die japanische Ausgabe der internationalen PDR-Messe. Mit zweisprachigen Inhalten, Veranstaltungsplänen und Ausstellerverwaltung für den asiatischen Markt.",
+      "Webplattform für die japanische Ausgabe der internationalen PDR-Messe, mit zweisprachigen Inhalten und Veranstaltungsplänen für den asiatischen Markt. Geht weit über eine reine Marketing-Site hinaus: Sie wickelt Ticketverkauf, Sponsoring-Pakete sowie Aussteller- und Champion-Registrierungen vollständig ab. Das Ticketsystem stellt Besuchern Wallet-Tickets aus, die am Empfang gescannt werden können — und jeder online verkaufte Artikel, von Sponsoring-Slots bis zu Zusatzposten, wird gegen einen globalen Lagerbestand geführt, damit nichts überverkauft wird.",
     image: "/images/iasre-japan.jpg",
     tags: ["Events", "International", "PDR"],
     tagsDe: ["Veranstaltungen", "International", "PDR"],
