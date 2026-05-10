@@ -129,12 +129,17 @@ export default function FeaturedProjects() {
 
                 {/* Year badge */}
                 <div className="absolute right-4 top-4 flex items-center gap-2">
-                  {project.url && (
+                  {project.url ? (
                     <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-emerald-400 backdrop-blur-sm">
                       <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       Live
                     </span>
-                  )}
+                  ) : project.status === "private" ? (
+                    <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-amber-300 backdrop-blur-sm">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+                      {t.projectDetail.private}
+                    </span>
+                  ) : null}
                   <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-white backdrop-blur-sm">
                     {project.year}
                   </span>

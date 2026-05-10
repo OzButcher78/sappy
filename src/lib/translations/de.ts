@@ -153,8 +153,15 @@ const de: Translations = {
     category: "Kategorie",
     status: "Status",
     live: "Live",
+    private: "Privat",
+    privateNote: "Diese App ist derzeit privat und nicht öffentlich zugänglich.",
     visitLive: "Live-Projekt besuchen",
     nextProject: "Nächstes Projekt",
+    screenshots: "Screenshots",
+    expand: "Vergrössern",
+    close: "Schliessen",
+    previous: "Vorheriges Bild",
+    next: "Nächstes Bild",
   },
 };
 

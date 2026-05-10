@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -23,12 +23,42 @@ function ProjectPageContent() {
   const { t, locale } = useI18n();
   const { slug } = useParams();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const project = getProjectBySlug(slug as string);
+  const screenshots = project?.screenshots ?? [];
 
   // Find next project for navigation
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const showPrev = useCallback(() => {
+    setLightboxIndex((i) =>
+      i === null ? null : (i - 1 + screenshots.length) % screenshots.length
+    );
+  }, [screenshots.length]);
+  const showNext = useCallback(() => {
+    setLightboxIndex((i) =>
+      i === null ? null : (i + 1) % screenshots.length
+    );
+  }, [screenshots.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") showPrev();
+      else if (e.key === "ArrowRight") showNext();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIndex, closeLightbox, showPrev, showNext]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -80,6 +110,23 @@ function ProjectPageContent() {
             duration: 0.8,
             ease: "back.out(1.5)",
             scrollTrigger: { trigger: cta, start: "top 90%" },
+          }
+        );
+      }
+
+      // Screenshots stagger
+      const shots = containerRef.current?.querySelectorAll(".project-screenshot");
+      if (shots && shots.length) {
+        gsap.fromTo(
+          shots,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: { trigger: ".project-screenshots", start: "top 85%" },
           }
         );
       }
@@ -188,14 +235,23 @@ function ProjectPageContent() {
               {project.category}
             </p>
           </div>
-          {project.url && (
+          {(project.url || project.status === "private") && (
             <div>
               <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
                 {t.projectDetail.status}
               </span>
               <p className="mt-1 flex items-center gap-2 text-[var(--foreground)]">
-                <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                {t.projectDetail.live}
+                {project.status === "private" ? (
+                  <>
+                    <span className="inline-block h-2 w-2 rounded-full bg-amber-400" />
+                    {t.projectDetail.private}
+                  </>
+                ) : (
+                  <>
+                    <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    {t.projectDetail.live}
+                  </>
+                )}
               </p>
             </div>
           )}
@@ -251,6 +307,50 @@ function ProjectPageContent() {
           </div>
         )}
 
+        {/* Private app note */}
+        {!project.url && project.status === "private" && (
+          <div className="project-cta mt-16 flex justify-center opacity-0">
+            <div className="inline-flex items-center gap-3 rounded-full border border-amber-400/40 bg-amber-400/10 px-6 py-3 text-sm tracking-[0.15em] uppercase text-amber-300">
+              <span className="inline-block h-2 w-2 rounded-full bg-amber-400" />
+              <span>{t.projectDetail.privateNote}</span>
+            </div>
+          </div>
+        )}
+
+        {/* Screenshots gallery */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <div className="project-screenshots mt-24">
+            <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
+              {t.projectDetail.screenshots}
+            </span>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {project.screenshots.map((src, i) => (
+                <button
+                  key={src}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="project-screenshot group relative block overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] opacity-0 transition-all duration-300 hover:border-[var(--accent)]/50 hover:shadow-[0_8px_40px_rgba(59,159,216,0.12)] focus:outline-none focus-visible:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)]/40"
+                  aria-label={`Open screenshot ${i + 1}`}
+                >
+                  <Image
+                    src={src}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                    width={1200}
+                    height={800}
+                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="rounded-full border border-white/40 bg-black/40 px-4 py-2 text-xs tracking-[0.2em] uppercase text-white backdrop-blur-sm">
+                      {t.projectDetail.expand}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Next project */}
         <div className="next-project mt-32 mb-20 border-t border-[var(--border-color)] pt-12 opacity-0">
           <span className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">
@@ -281,6 +381,105 @@ function ProjectPageContent() {
           </Link>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && screenshots[lightboxIndex] && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={t.projectDetail.screenshots}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          {/* Close */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-all hover:border-white/60 hover:bg-black/60 sm:right-6 sm:top-6"
+            aria-label={t.projectDetail.close}
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M5 5l10 10M15 5L5 15"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+
+          {/* Counter */}
+          <div className="absolute left-1/2 top-4 z-10 -translate-x-1/2 rounded-full border border-white/20 bg-black/40 px-4 py-1.5 text-xs tracking-[0.2em] uppercase text-white/80 sm:top-6">
+            {lightboxIndex + 1} / {screenshots.length}
+          </div>
+
+          {screenshots.length > 1 && (
+            <>
+              {/* Prev */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showPrev();
+                }}
+                className="absolute left-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-all hover:border-white/60 hover:bg-black/60 sm:left-6 sm:h-14 sm:w-14"
+                aria-label={t.projectDetail.previous}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M15 6l-6 6 6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              {/* Next */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showNext();
+                }}
+                className="absolute right-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-all hover:border-white/60 hover:bg-black/60 sm:right-6 sm:h-14 sm:w-14"
+                aria-label={t.projectDetail.next}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M9 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </>
+          )}
+
+          {/* Image */}
+          <div
+            className="relative flex h-full w-full items-center justify-center px-4 py-20 sm:px-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              key={screenshots[lightboxIndex]}
+              src={screenshots[lightboxIndex]}
+              alt={`${project.title} screenshot ${lightboxIndex + 1}`}
+              width={1920}
+              height={1280}
+              className="max-h-full max-w-full object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

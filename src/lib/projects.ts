@@ -6,16 +6,46 @@ export interface Project {
   description: string;
   descriptionDe?: string;
   image: string;
+  screenshots?: string[];
   tags: string[];
   tagsDe?: string[];
   year: string;
   url?: string;
+  status?: "private";
   category: "web" | "app" | "tool";
   featured: boolean;
 }
 
 export const projects: Project[] = [
   // === Featured (in display order) ===
+  {
+    slug: "keto-coach",
+    title: "Keto Coach",
+    subtitle: "AI-Powered Keto Diet Companion",
+    subtitleDe: "KI-gestützter Begleiter für die Keto-Diät",
+    description:
+      "A personal web app — desktop and mobile — built to make starting and sticking to a Keto diet effortless. Snap a photo of any meal and Keto Coach instantly tells you whether it fits the diet, what to avoid, and the macro breakdown — all contextualized against your daily targets. Get tailored breakfast, lunch, dinner, or snack ideas based on what's left in your fridge and your remaining macro headroom. Log meals with auto-estimated calories, net carbs, protein, and fat, then track gains, achievements, and weekly progress. When the scale stalls, the 'Diagnose my week' tool reviews your last 7 days and ranks the most likely causes with concrete next steps. Currently a private app — built for myself, but I may open it up if there's interest.",
+    descriptionDe:
+      "Eine persönliche Web-App — für Desktop und mobile Geräte —, die ich entwickelt habe, um den Einstieg in die Keto-Diät und das Durchhalten so einfach wie möglich zu machen. Ein Foto deiner Mahlzeit reicht — Keto Coach sagt dir sofort, ob das Essen zur Diät passt, welche Bestandteile zu meiden sind, und liefert die Makro-Aufschlüsselung, alles im Kontext deiner Tageswerte. Erhalte massgeschneiderte Ideen für Frühstück, Mittag- oder Abendessen sowie Snacks, basierend auf dem Inhalt deines Kühlschranks und deinem verbleibenden Makro-Spielraum. Erfasse Mahlzeiten mit automatisch geschätzten Kalorien, Netto-Kohlenhydraten, Protein und Fett und verfolge Fortschritte, Erfolge und Wochenstatistiken. Wenn die Waage stillsteht, analysiert das «Woche diagnostizieren»-Tool deine letzten 7 Tage und priorisiert die wahrscheinlichsten Ursachen mit konkreten Schritten. Derzeit eine private App — für mich selbst entwickelt, bei Interesse möglicherweise öffentlich zugänglich.",
+    image: "/images/keto/dash.jpg",
+    screenshots: [
+      "/images/keto/dash.jpg",
+      "/images/keto/dash2.jpg",
+      "/images/keto/analyse1.jpg",
+      "/images/keto/analyse2.jpg",
+      "/images/keto/whattoeat1.jpg",
+      "/images/keto/whattoeat2.jpg",
+      "/images/keto/log1.jpg",
+      "/images/keto/log2.jpg",
+      "/images/keto/settings.jpg",
+    ],
+    tags: ["AI", "Health", "Nutrition", "Web App", "Private"],
+    tagsDe: ["KI", "Gesundheit", "Ernährung", "Web-App", "Privat"],
+    year: "2026",
+    status: "private",
+    category: "app",
+    featured: true,
+  },
   {
     slug: "pdrkalk-website",
     title: "PDR Kalk",

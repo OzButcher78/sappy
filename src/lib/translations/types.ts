@@ -105,7 +105,14 @@ export interface Translations {
     category: string;
     status: string;
     live: string;
+    private: string;
+    privateNote: string;
     visitLive: string;
     nextProject: string;
+    screenshots: string;
+    expand: string;
+    close: string;
+    previous: string;
+    next: string;
   };
 }
