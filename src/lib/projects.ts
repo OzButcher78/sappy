@@ -47,6 +47,23 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "iasre-japan",
+    title: "IASRE Japan",
+    subtitle: "Japanese PDR Expo",
+    subtitleDe: "Japanische PDR-Messe",
+    description:
+      "Web platform for the Japanese edition of the international PDR expo. Featuring bilingual content, event schedules, and exhibitor management for the Asian market.",
+    descriptionDe:
+      "Webplattform für die japanische Ausgabe der internationalen PDR-Messe. Mit zweisprachigen Inhalten, Veranstaltungsplänen und Ausstellerverwaltung für den asiatischen Markt.",
+    image: "/images/iasre-japan.jpg",
+    tags: ["Events", "International", "PDR"],
+    tagsDe: ["Veranstaltungen", "International", "PDR"],
+    year: "2023",
+    url: "https://www.iasre-japan.com/",
+    category: "web",
+    featured: true,
+  },
+  {
     slug: "pdrkalk-website",
     title: "PDR Kalk",
     subtitle: "Product Website for PDR Software",
@@ -61,23 +78,6 @@ export const projects: Project[] = [
     year: "2025",
     url: "https://www.pdrkalk.com",
     category: "web",
-    featured: true,
-  },
-  {
-    slug: "retro-game",
-    title: "Retro Game",
-    subtitle: "Father & Son Arcade Project",
-    subtitleDe: "Vater-Sohn-Arcade-Projekt",
-    description:
-      "A retro-style browser game built together with my son. Best experienced on tablets or desktop — load it up and jump straight in. A fun side project blending nostalgia with modern web tech.",
-    descriptionDe:
-      "Ein Retro-Browserspiel, das ich zusammen mit meinem Sohn entwickelt habe. Am besten auf Tablets oder Desktop — einfach laden und losspielen. Ein Spassprojekt, das Nostalgie mit moderner Webtechnologie verbindet.",
-    image: "/images/kidapp.jpg",
-    tags: ["Game", "Retro", "Browser"],
-    tagsDe: ["Spiel", "Retro", "Browser"],
-    year: "2024",
-    url: "https://kid.sappy.ch/",
-    category: "app",
     featured: true,
   },
   {
@@ -115,20 +115,20 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "weltmeister",
-    title: "Weltmeister",
-    subtitle: "Continent & Ocean Quiz for Kids",
-    subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
+    slug: "clever-ausbeulen",
+    title: "Clever-Ausbeulen",
+    subtitle: "Paintless Dent Repair Service",
+    subtitleDe: "Lackschadenfreie Dellenreparatur",
     description:
-      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
+      "Professional web presence for a paintless dent repair specialist. Showcasing services, expertise, and customer results with a clean, conversion-focused design.",
     descriptionDe:
-      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
-    image: "/images/weltmeister.jpg",
-    tags: ["Education", "Kids", "Quiz", "Free"],
-    tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
-    year: "2026",
-    url: "https://welt.sappy.ch",
-    category: "app",
+      "Professioneller Webauftritt für einen Spezialisten für lackschadenfreie Dellenreparatur. Präsentation von Dienstleistungen, Fachwissen und Kundenergebnissen mit klarem, konversionsorientiertem Design.",
+    image: "/images/clever.jpg",
+    tags: ["Web Design", "Service Business", "PDR"],
+    tagsDe: ["Webdesign", "Dienstleistung", "PDR"],
+    year: "2024",
+    url: "https://cleverausbeulen.ch/",
+    category: "web",
     featured: true,
   },
   {
@@ -146,6 +146,40 @@ export const projects: Project[] = [
     year: "2023",
     url: "https://autoausbeulen.ch",
     category: "web",
+    featured: true,
+  },
+  {
+    slug: "retro-game",
+    title: "Retro Game",
+    subtitle: "Father & Son Arcade Project",
+    subtitleDe: "Vater-Sohn-Arcade-Projekt",
+    description:
+      "A retro-style browser game built together with my son. Best experienced on tablets or desktop — load it up and jump straight in. A fun side project blending nostalgia with modern web tech.",
+    descriptionDe:
+      "Ein Retro-Browserspiel, das ich zusammen mit meinem Sohn entwickelt habe. Am besten auf Tablets oder Desktop — einfach laden und losspielen. Ein Spassprojekt, das Nostalgie mit moderner Webtechnologie verbindet.",
+    image: "/images/kidapp.jpg",
+    tags: ["Game", "Retro", "Browser"],
+    tagsDe: ["Spiel", "Retro", "Browser"],
+    year: "2024",
+    url: "https://kid.sappy.ch/",
+    category: "app",
+    featured: true,
+  },
+  {
+    slug: "weltmeister",
+    title: "Weltmeister",
+    subtitle: "Continent & Ocean Quiz for Kids",
+    subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
+    description:
+      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
+    descriptionDe:
+      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
+    image: "/images/weltmeister.jpg",
+    tags: ["Education", "Kids", "Quiz", "Free"],
+    tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
+    year: "2026",
+    url: "https://welt.sappy.ch",
+    category: "app",
     featured: true,
   },
   // === Non-featured ===
@@ -182,23 +216,6 @@ export const projects: Project[] = [
     url: "https://masterfixpdr.se/",
     category: "web",
     featured: false,
-  },
-  {
-    slug: "clever-ausbeulen",
-    title: "Clever-Ausbeulen",
-    subtitle: "Paintless Dent Repair Service",
-    subtitleDe: "Lackschadenfreie Dellenreparatur",
-    description:
-      "Professional web presence for a paintless dent repair specialist. Showcasing services, expertise, and customer results with a clean, conversion-focused design.",
-    descriptionDe:
-      "Professioneller Webauftritt für einen Spezialisten für lackschadenfreie Dellenreparatur. Präsentation von Dienstleistungen, Fachwissen und Kundenergebnissen mit klarem, konversionsorientiertem Design.",
-    image: "/images/clever.jpg",
-    tags: ["Web Design", "Service Business", "PDR"],
-    tagsDe: ["Webdesign", "Dienstleistung", "PDR"],
-    year: "2024",
-    url: "https://cleverausbeulen.ch/",
-    category: "web",
-    featured: true,
   },
   {
     slug: "dentag",
@@ -269,23 +286,6 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    slug: "iasre-japan",
-    title: "IASRE Japan",
-    subtitle: "Japanese PDR Expo",
-    subtitleDe: "Japanische PDR-Messe",
-    description:
-      "Web platform for the Japanese edition of the international PDR expo. Featuring bilingual content, event schedules, and exhibitor management for the Asian market.",
-    descriptionDe:
-      "Webplattform für die japanische Ausgabe der internationalen PDR-Messe. Mit zweisprachigen Inhalten, Veranstaltungsplänen und Ausstellerverwaltung für den asiatischen Markt.",
-    image: "/images/iasre-japan.jpg",
-    tags: ["Events", "International", "PDR"],
-    tagsDe: ["Veranstaltungen", "International", "PDR"],
-    year: "2023",
-    url: "https://www.iasre-japan.com/",
-    category: "web",
-    featured: true,
-  },
-  {
     slug: "homehuahin",
     title: "Home Hua Hin",
     subtitle: "Luxury Property Showcase",
@@ -334,7 +334,7 @@ export const projects: Project[] = [
     year: "2022",
     url: "https://www.erna.hr/",
     category: "web",
-    featured: true,
+    featured: false,
   },
 ];
 
