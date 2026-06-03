@@ -117,6 +117,30 @@ export default function FeaturedProjects() {
               href={`/project/${project.slug}`}
               className="project-card group block overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] opacity-0"
             >
+              {/* Meta strip — pills sit on the card surface, never over the image */}
+              <div className="flex items-center justify-between gap-3 px-4 pt-4 pb-3">
+                {/* Type badge */}
+                <CategoryBadge category={project.category} locale={locale} />
+
+                {/* Status + year */}
+                <div className="flex items-center gap-2">
+                  {project.url ? (
+                    <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-emerald-400">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Live
+                    </span>
+                  ) : project.status === "private" ? (
+                    <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-amber-300">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+                      {t.projectDetail.private}
+                    </span>
+                  ) : null}
+                  <span className="rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-[var(--muted)]">
+                    {project.year}
+                  </span>
+                </div>
+              </div>
+
               {/* Image */}
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
@@ -127,33 +151,6 @@ export default function FeaturedProjects() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
-                {/* Top scrim so the badges read as a deliberate overlay, not slapped on the image */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/45 to-transparent" />
-
-                {/* Type badge */}
-                <CategoryBadge
-                  category={project.category}
-                  locale={locale}
-                  className="absolute left-4 top-4 z-10"
-                />
-
-                {/* Year badge */}
-                <div className="absolute right-4 top-4 flex items-center gap-2">
-                  {project.url ? (
-                    <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-emerald-400 backdrop-blur-sm">
-                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Live
-                    </span>
-                  ) : project.status === "private" ? (
-                    <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-amber-300 backdrop-blur-sm">
-                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
-                      {t.projectDetail.private}
-                    </span>
-                  ) : null}
-                  <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-white backdrop-blur-sm">
-                    {project.year}
-                  </span>
-                </div>
               </div>
 
               {/* Content */}

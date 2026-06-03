@@ -165,6 +165,28 @@ function ProjectCard({ project }: { project: Project }) {
       className="project-card-all group block overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] opacity-0 transition-all duration-500 hover:border-[var(--accent)]/30 hover:shadow-[0_8px_40px_rgba(59,159,216,0.08)]"
       style={{ transform: "translateY(0)" }}
     >
+      {/* Meta strip — pills sit on the card surface, never over the image */}
+      <div className="flex items-center justify-between gap-3 px-4 pt-4 pb-3">
+        <CategoryBadge category={project.category} locale={locale} />
+
+        <div className="flex items-center gap-2">
+          {project.url ? (
+            <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-emerald-400">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live
+            </span>
+          ) : project.status === "private" ? (
+            <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-amber-300">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              {t.projectDetail.private}
+            </span>
+          ) : null}
+          <span className="rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-[var(--muted)]">
+            {project.year}
+          </span>
+        </div>
+      </div>
+
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -175,27 +197,6 @@ function ProjectCard({ project }: { project: Project }) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
-
-        {/* Badges */}
-        <div className="absolute right-4 top-4 flex items-center gap-2">
-          {project.url ? (
-            <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-emerald-400 backdrop-blur-sm">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Live
-            </span>
-          ) : project.status === "private" ? (
-            <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-amber-300 backdrop-blur-sm">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
-              {t.projectDetail.private}
-            </span>
-          ) : null}
-          <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-white backdrop-blur-sm">
-            {project.year}
-          </span>
-        </div>
-
-        {/* Category badge */}
-        <CategoryBadge category={project.category} locale={locale} className="absolute left-4 top-4" />
       </div>
 
       {/* Content */}
