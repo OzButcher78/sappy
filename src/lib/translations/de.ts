@@ -105,7 +105,7 @@ const de: Translations = {
       "Seit 1998 führe ich mehrere eigene Unternehmen — ich entwerfe und fertige professionelle PDR-Werkzeuge und Zubehör für die Autobranche und verkaufe sowohl digitale Designs als auch fertige Produkte an Kunden weltweit. Daneben entwickle ich laufend innovative digitale Anwendungen, Webplattformen und Software.",
     paragraph3:
       "Wo andere verschiedene Welten sehen — Technik, Werkstatt, Web — sehe ich denselben Antrieb: Präzision, Problemlösung und das Streben nach einem makellosen Ergebnis.",
-    coreTechnologies: "Kerntechnologien",
+    coreTechnologies: "Fähigkeiten & Werkzeuge",
     stats: [
       { value: "87+", label: "Projekte realisiert" },
       { value: "30+", label: "Jahre Erfahrung" },

@@ -105,7 +105,7 @@ const en: Translations = {
       "Since 1998 I've run several of my own businesses — designing and manufacturing professional PDR tools and accessories for the automotive trade, and selling both digital designs and finished products to customers worldwide. Alongside that I keep building innovative digital applications, web platforms, and software.",
     paragraph3:
       "Where others see different worlds — engineering, the workshop, the web — I see the same drive: precision, problem-solving, and the pursuit of a flawless finish.",
-    coreTechnologies: "Core Technologies",
+    coreTechnologies: "Skills & Tools",
     stats: [
       { value: "87+", label: "Projects Delivered" },
       { value: "30+", label: "Years Experience" },
