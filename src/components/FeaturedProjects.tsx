@@ -127,6 +127,8 @@ export default function FeaturedProjects() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
+                {/* Top scrim so the badges read as a deliberate overlay, not slapped on the image */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/45 to-transparent" />
 
                 {/* Type badge */}
                 <CategoryBadge
@@ -176,7 +178,7 @@ export default function FeaturedProjects() {
                 </div>
 
                 {/* Arrow */}
-                <div className="mt-6 flex items-center gap-2 text-sm text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <div className="mt-6 hidden items-center gap-2 text-sm text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100 sm:flex">
                   <span className="tracking-wider uppercase">
                     {project.url ? t.featuredProjects.viewLive : t.featuredProjects.viewProject}
                   </span>

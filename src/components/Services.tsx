@@ -111,7 +111,7 @@ export default function Services() {
             <div
               key={service.number}
               onMouseMove={handleMouseMove}
-              className="service-card service-card-glow group rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] p-8 opacity-0 transition-all duration-500 hover:border-[var(--accent)]/30 md:p-10"
+              className="service-card service-card-glow group rounded-2xl border border-[var(--border-color)] bg-[var(--surface)] p-6 opacity-0 transition-all duration-500 hover:border-[var(--accent)]/30 md:p-10"
             >
               {/* Number */}
               <span className="font-[family-name:var(--font-clash)] text-4xl font-bold text-[var(--accent)] opacity-20">
