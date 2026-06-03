@@ -207,7 +207,7 @@ export const landing: LandingContent = {
           "Alles aus der 1-Seiten-Website",
           "Mehrere individuelle Unterseiten",
           "Galerie & Referenzen",
-          "Erweiterte Kontaktformulare",
+          "Kontaktformular",
           "Strukturierte SEO-Grundlagen",
           "Live in rund 3 Wochen",
         ],
