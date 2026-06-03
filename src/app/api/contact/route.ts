@@ -97,11 +97,7 @@ export async function POST(req: Request) {
 
   if (lead.error) {
     console.error("[contact] lead notification failed:", lead.error);
-    // TEMP DEBUG: surface the real reason + resolved (non-secret) env values.
-    return NextResponse.json(
-      { error: "send_failed", detail: lead.error, from: FROM_EMAIL, to: TO_EMAIL },
-      { status: 502 }
-    );
+    return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 
   // 2) Auto-reply to the prospect — best effort. A failure here (e.g. domain
