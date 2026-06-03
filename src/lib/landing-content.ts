@@ -124,7 +124,6 @@ export const landing: LandingContent = {
     cta: "Kostenloses 15-Minuten-Gespräch anfragen",
     trust: [
       "Fixpreis ohne Überraschungen",
-      "4 Länder",
       "Schweizer Qualität",
       "Antwort innert 24 h",
     ],

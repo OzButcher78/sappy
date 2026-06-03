@@ -32,6 +32,15 @@ export default function Proof() {
               rel="noopener noreferrer"
               className="project-card landing-reveal group block overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--surface)]"
             >
+              {/* Meta strip — pills sit on the card surface, never over the image */}
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 pt-4 pb-3">
+                <CategoryBadge category={p.category} locale="de" />
+                <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-emerald-400">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Live
+                </span>
+              </div>
+
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={p.image}
@@ -41,11 +50,6 @@ export default function Proof() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
-                <CategoryBadge category={p.category} locale="de" className="absolute left-3 top-3" />
-                <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wider text-emerald-400 backdrop-blur-sm">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  Live
-                </span>
               </div>
               <div className="p-5">
                 <h3 className="font-[family-name:var(--font-clash)] text-base font-semibold tracking-tight transition-colors group-hover:text-[var(--accent)]">
