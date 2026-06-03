@@ -39,22 +39,22 @@ const de: Translations = {
     items: [
       {
         number: "01",
-        title: "Webentwicklung",
+        title: "Webentwicklung / IT-Support",
         description:
-          "Hochperformante Websites, massgeschneidert mit modernen Frameworks. Von Firmenwebseiten bis zu komplexen Plattformen — responsiv, schnell und handwerklich perfekt umgesetzt. Heben Sie sich ab! Preise ab 2'000 EUR.",
+          "Individuell gestaltete, hochperformante Websites — responsiv, schnell und handwerklich perfekt. Die elegante 1-Seiten-Website mit Markendesign, Animationen, Formularen sowie Impressum & Datenschutz gibt es ab CHF 2'000. Kleine mehrseitige Websites ab CHF 3'000. Grosse Websites mit Shop, Zahlungssystemen, Mehrsprachigkeit und individuellen Plugins ab CHF 5'000. Dazu zuverlässiger IT-Support — Hosting, E-Mail-Einrichtung, Wartung und Fehlerbehebung ab CHF 120/Stunde.",
         capabilities: [
-          "E-Commerce",
-          "Events",
-          "KI-Integration",
-          "Responsiv",
-          "Modernste Technik",
+          "1-Seite: ab CHF 2'000",
+          "Mehrseitig: ab CHF 3'000",
+          "Mit Shop: ab CHF 5'000",
+          "Hosting & Wartung",
+          "IT-Support: ab CHF 120/h",
         ],
       },
       {
         number: "02",
         title: "Applikationen",
         description:
-          "Design und Entwicklung massgeschneiderter Anwendungen und Plugins, die Geschäftsprozesse automatisieren und Arbeitsabläufe verbessern. Vom Konzept bis zur Bereitstellung — wir bauen Werkzeuge, die zu Ihrem Unternehmen passen.",
+          "Design und Entwicklung massgeschneiderter Anwendungen und Plugins, die Geschäftsprozesse automatisieren und Arbeitsabläufe verbessern. Vom Konzept bis zur Bereitstellung — wir bauen Werkzeuge, die zu Ihrem Unternehmen passen. Einfache Apps & Plugins ab CHF 3'000, massgeschneiderte Anwendungen ab CHF 8'000.",
         capabilities: [
           "WordPress Plugins",
           "E-Comm Plugins",
@@ -64,13 +64,15 @@ const de: Translations = {
       },
       {
         number: "03",
-        title: "IT-Support",
+        title: "KI & Automatisierung",
         description:
-          "Zuverlässiger technischer Support für Webhosting, E-Mail-Einrichtung sowie PC-Setup und Fehlerbehebung. Laufende Wartung und Updates für kommerzielle Websites. Preise ab 100 CHF/Stunde.",
+          "Heute kommt kaum eine Dienstleistung ohne KI aus — und wer weiss, wie man sie richtig einsetzt, verschafft sich einen echten Vorsprung. Ich habe ein natürliches Gespür für KI-Systeme und arbeite versiert mit den führenden Modellen — insbesondere OpenAI und Anthropic. Ich verbinde KI über API-Schnittstellen mit Websites, Apps und Datenbanken, automatisiere wiederkehrende Abläufe und mache Ihre Projekte so schneller und intelligenter — von KI-Funktionen wie Bildanalyse und Chatbots bis hin zu massgeschneiderter Automatisierung und Integration.",
         capabilities: [
-          "Webhosting",
-          "Web-Einrichtung & Wartung",
-          "Computer-Support & Fehlerbehebung",
+          "OpenAI",
+          "Anthropic",
+          "API-Integration",
+          "Automatisierung",
+          "KI-Funktionen",
         ],
       },
       {
@@ -96,15 +98,17 @@ const de: Translations = {
     quote:
       "Ein Enthusiast sieht Möglichkeiten, wo andere Komplexität sehen.",
     intro:
-      "Ich bin Dieter Balmer — Schweizer Unternehmer, Auto-Enthusiast und Autodidakt im Programmieren seit 1988.",
+      "Ich bin Dieter Balmer — Schweizer Unternehmer, Auto-Enthusiast und Erfinder aus Leidenschaft, der seit 1987 programmiert.",
     paragraph1:
-      "Mit 10 Jahren habe ich mir selbst das Programmieren in BASIC beigebracht. Diese frühe Neugier entwickelte sich zu einer lebenslangen Leidenschaft für das Erschaffen — von digitalen Produkten und Webplattformen bis hin zu handwerklicher Arbeit in der Automobilwelt.",
+      "Angefangen hat alles 1987 an einem der ersten IBM-PCs. Mit zehn Jahren brachte ich mir das Programmieren selbst bei — neugierig genug, dass mein Vater mir bald Privatunterricht ermöglichte — und später lernte ich Informatik und Programmieren in der Schule. Mitte der 1990er-Jahre steckte ich tief in Bulletin Boards und IRC-Kanälen — mit siebzehn betreute ich einen grossen, aktiven IRC-Kanal in Perth, Australien — und als das Internet aufkam, war ich von Anfang an vorne mit dabei und baute Websites von Hand in reinem HTML. Mit den sich ständig wandelnden Standards des Webs entwickle ich mich seither weiter.",
     paragraph2:
-      "Heute führe ich meine eigenen Unternehmen als Spezialist für lackschadenfreie Dellenreparatur (PDR) und als Designer und Hersteller professioneller PDR-Werkzeuge und Zubehör — verkauft an Techniker weltweit. Daneben entwerfe und entwickle ich weiterhin Software, Apps und digitale Erlebnisse. Wo andere verschiedene Welten sehen, sehe ich denselben Antrieb — Präzision, Problemlösung und das Streben nach einem makellosen Ergebnis.",
+      "Seit 1998 führe ich mehrere eigene Unternehmen — ich entwerfe und fertige professionelle PDR-Werkzeuge und Zubehör für die Autobranche und verkaufe sowohl digitale Designs als auch fertige Produkte an Kunden weltweit. Daneben entwickle ich laufend innovative digitale Anwendungen, Webplattformen und Software.",
+    paragraph3:
+      "Wo andere verschiedene Welten sehen — Technik, Werkstatt, Web — sehe ich denselben Antrieb: Präzision, Problemlösung und das Streben nach einem makellosen Ergebnis.",
     coreTechnologies: "Kerntechnologien",
     stats: [
-      { value: "50+", label: "Projekte realisiert" },
-      { value: "8+", label: "Jahre Erfahrung" },
+      { value: "87+", label: "Projekte realisiert" },
+      { value: "30+", label: "Jahre Erfahrung" },
       { value: "100%", label: "Schweizer Qualität" },
     ],
   },
@@ -142,19 +146,20 @@ const de: Translations = {
     noProjects: "Noch keine Projekte in dieser Kategorie.",
     viewLive: "Live ansehen",
     viewDetails: "Details ansehen",
-    categories: { all: "alle", web: "web", app: "app", tool: "tool" },
+    categories: { all: "alle", web: "web", app: "app" },
   },
 
   projectDetail: {
     notFound: "Projekt nicht gefunden",
     backToHome: "Zurück zur Startseite",
     back: "Zurück",
+    keyFeatures: "Funktionen & Highlights",
     year: "Jahr",
     category: "Kategorie",
     status: "Status",
     live: "Live",
     private: "Privat",
-    privateNote: "Diese App ist derzeit privat und nicht öffentlich zugänglich.",
+    privateNote: "Diese App ist derzeit privat und nicht öffentlich zugänglich — auf Anfrage verfügbar.",
     visitLive: "Live-Projekt besuchen",
     nextProject: "Nächstes Projekt",
     screenshots: "Screenshots",

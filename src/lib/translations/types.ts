@@ -54,6 +54,7 @@ export interface Translations {
     intro: string;
     paragraph1: string;
     paragraph2: string;
+    paragraph3: string;
     coreTechnologies: string;
     stats: StatItem[];
   };
@@ -93,7 +94,6 @@ export interface Translations {
       all: string;
       web: string;
       app: string;
-      tool: string;
     };
   };
 
@@ -101,6 +101,7 @@ export interface Translations {
     notFound: string;
     backToHome: string;
     back: string;
+    keyFeatures: string;
     year: string;
     category: string;
     status: string;

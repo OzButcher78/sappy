@@ -182,9 +182,6 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 opacity-0 hidden sm:block"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">
-            {t.hero.scroll}
-          </span>
           <div className="relative h-12 w-px overflow-hidden bg-[var(--border-color)]">
             <div className="animate-scroll-line absolute left-0 top-0 h-1/2 w-full bg-[var(--accent)]" />
           </div>

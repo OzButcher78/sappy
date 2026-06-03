@@ -74,6 +74,22 @@ export default function Footer() {
             </p>
           </div>
         </div>
+
+        {/* Legal */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-[var(--border-color)] pt-6">
+          <Link
+            href="/impressum"
+            className="text-xs tracking-[0.15em] uppercase text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+          >
+            Impressum
+          </Link>
+          <Link
+            href="/datenschutz"
+            className="text-xs tracking-[0.15em] uppercase text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+          >
+            Datenschutz
+          </Link>
+        </div>
       </div>
     </footer>
   );

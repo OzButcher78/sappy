@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { getFeaturedProjects } from "@/lib/projects";
+import CategoryBadge from "@/components/CategoryBadge";
 import { useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -126,6 +127,13 @@ export default function FeaturedProjects() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
+
+                {/* Type badge */}
+                <CategoryBadge
+                  category={project.category}
+                  locale={locale}
+                  className="absolute left-4 top-4 z-10"
+                />
 
                 {/* Year badge */}
                 <div className="absolute right-4 top-4 flex items-center gap-2">

@@ -39,22 +39,22 @@ const en: Translations = {
     items: [
       {
         number: "01",
-        title: "Web Development",
+        title: "Web Development / IT Support",
         description:
-          "High-performance websites, custom-built with modern frameworks. From corporate sites to complex platforms — responsive, fast, and beautifully crafted. Stand out! Prices starting from 2,000 EUR.",
+          "Custom-built, high-performance websites — responsive, fast and beautifully crafted. The elegant one-page site with brand design, animations, forms plus legal pages starts at CHF 2,000. Small multi-page sites from CHF 3,000. Large websites with shop, payment systems, multiple languages and custom plugins from CHF 5,000. Plus reliable ongoing IT support — hosting, email setup, maintenance and troubleshooting from CHF 120/hour.",
         capabilities: [
-          "E-Commerce",
-          "Events",
-          "AI Integration",
-          "Responsive",
-          "State of the Art",
+          "1 page: from CHF 2,000",
+          "Multi-page: from CHF 3,000",
+          "With shop: from CHF 5,000",
+          "Hosting & Maintenance",
+          "IT Support: from CHF 120/h",
         ],
       },
       {
         number: "02",
         title: "Applications",
         description:
-          "Design and development of custom applications and plugins that automate and streamline business processes and improve workflow. From concept to deployment, we build tools that work the way your business does.",
+          "Design and development of custom applications and plugins that automate and streamline business processes and improve workflow. From concept to deployment, we build tools that work the way your business does. Simple apps & plugins from CHF 3,000; custom applications from CHF 8,000.",
         capabilities: [
           "WordPress Plugins",
           "E-Comm Plugins",
@@ -64,13 +64,15 @@ const en: Translations = {
       },
       {
         number: "03",
-        title: "IT Support",
+        title: "AI & Automation",
         description:
-          "Reliable technical support covering web hosting, email setup, and PC setup and troubleshooting. Ongoing maintenance and updates for commercial websites. Starting prices from 100 CHF/hour.",
+          "These days, what service doesn't touch AI? Knowing how to implement it well is what gives you a real edge. I have a natural feel for AI systems and work fluently with today's leading models — OpenAI and Anthropic in particular. I connect AI to websites, apps and databases via API, automate repetitive workflows, and use it to make your projects faster and smarter — from AI-powered features like photo analysis and chatbots to bespoke automation and integration.",
         capabilities: [
-          "Web Hosting",
-          "Web Setup & Maintenance",
-          "Computer Support & Troubleshooting",
+          "OpenAI",
+          "Anthropic",
+          "API Integration",
+          "Automation",
+          "AI-Powered Features",
         ],
       },
       {
@@ -96,15 +98,17 @@ const en: Translations = {
     quote:
       "An enthusiast sees possibility where others see complexity.",
     intro:
-      "I'm Dieter Balmer — Swiss entrepreneur, automotive enthusiast, and self-taught developer since 1988.",
+      "I'm Dieter Balmer — Swiss entrepreneur, automotive enthusiast, and an inventor at heart who has been writing code since 1987.",
     paragraph1:
-      "I taught myself to code in BASIC at the age of 10. That early curiosity evolved into a lifelong passion for building things — from digital products and web platforms to hands-on craftsmanship in the automotive world.",
+      "It started on one of the first IBM PCs in 1987. I taught myself to program at the age of ten — curious enough that my father soon arranged private lessons — and later studied computer science and programming in high school. By the mid-1990s I was deep in bulletin boards and IRC channels — at seventeen I was running a large, active IRC channel in Perth, Australia — and as the internet began to emerge, I was right at the forefront, building websites by hand in plain HTML. I've kept adapting to the web's ever-changing standards ever since.",
     paragraph2:
-      "Today I run my own businesses as a specialist in Paintless Dent Repair (PDR) and as a designer and manufacturer of professional PDR tools and accessories — sold to technicians around the world. Alongside that, I continue to design and develop software, apps, and digital experiences. Where others see different worlds, I see the same drive — precision, problem-solving, and the pursuit of a flawless finish.",
+      "Since 1998 I've run several of my own businesses — designing and manufacturing professional PDR tools and accessories for the automotive trade, and selling both digital designs and finished products to customers worldwide. Alongside that I keep building innovative digital applications, web platforms, and software.",
+    paragraph3:
+      "Where others see different worlds — engineering, the workshop, the web — I see the same drive: precision, problem-solving, and the pursuit of a flawless finish.",
     coreTechnologies: "Core Technologies",
     stats: [
-      { value: "50+", label: "Projects Delivered" },
-      { value: "8+", label: "Years Experience" },
+      { value: "87+", label: "Projects Delivered" },
+      { value: "30+", label: "Years Experience" },
       { value: "100%", label: "Swiss Quality" },
     ],
   },
@@ -142,19 +146,20 @@ const en: Translations = {
     noProjects: "No projects in this category yet.",
     viewLive: "View Live",
     viewDetails: "View Details",
-    categories: { all: "all", web: "web", app: "app", tool: "tool" },
+    categories: { all: "all", web: "web", app: "app" },
   },
 
   projectDetail: {
     notFound: "Project Not Found",
     backToHome: "Back to Home",
     back: "Back",
+    keyFeatures: "Key Features",
     year: "Year",
     category: "Category",
     status: "Status",
     live: "Live",
     private: "Private",
-    privateNote: "This app is currently private and not publicly accessible.",
+    privateNote: "This app is currently private and not publicly accessible — available on request.",
     visitLive: "Visit Live Project",
     nextProject: "Next Project",
     screenshots: "Screenshots",

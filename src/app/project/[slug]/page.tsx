@@ -97,6 +97,21 @@ function ProjectPageContent() {
         }
       );
 
+      // Key features
+      const featuresEl = containerRef.current?.querySelector(".project-features");
+      if (featuresEl) {
+        gsap.fromTo(
+          featuresEl,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            scrollTrigger: { trigger: featuresEl, start: "top 85%" },
+          }
+        );
+      }
+
       // CTA button
       const cta = containerRef.current?.querySelector(".project-cta");
       if (cta) {
@@ -266,6 +281,41 @@ function ProjectPageContent() {
             {locale === "de" && project.descriptionDe ? project.descriptionDe : project.description}
           </p>
         </div>
+
+        {/* Key features */}
+        {(() => {
+          const features =
+            locale === "de" && project.featuresDe ? project.featuresDe : project.features;
+          if (!features || features.length === 0) return null;
+          return (
+            <div className="project-features mt-12 opacity-0">
+              <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
+                {t.projectDetail.keyFeatures}
+              </span>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {features.map((f) => (
+                  <li
+                    key={f}
+                    className="flex items-start gap-3 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] px-4 py-3.5"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/15">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M5 13l4 4L19 7"
+                          stroke="var(--accent-light)"
+                          strokeWidth="2.4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span className="text-[var(--foreground)]">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })()}
 
         {/* Visit Live Site CTA */}
         {project.url && (

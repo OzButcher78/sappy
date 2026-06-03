@@ -19,7 +19,7 @@
   --foreground: #f0ede6;
   --accent: #3b9fd8;
   --accent-light: #5cb8eb;
-  --muted: #6b6b7b;
+  --muted: #8c8c9a;
   --surface: #141419;
   --surface-elevated: #1c1c24;
   --border-color: #2a2a35;
@@ -405,4 +405,57 @@ body {
 .service-card-glow > * {
   position: relative;
   z-index: 1;
+}
+
+/* ============================================
+   /auto landing page
+   ============================================ */
+
+/* Scroll reveal — progressive enhancement only. Content is fully visible by
+   default (no opacity:0 base), so it always renders even without JS or on
+   browsers that lack CSS scroll-driven animations (e.g. older iOS / in-app
+   browsers). Where supported, sections fade up as they enter the viewport.
+   Elements already on screen at load render in their final state. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .landing-reveal {
+      animation: landing-reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes landing-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Legal pages (Impressum / Datenschutz) prose */
+.legal-prose h2 {
+  color: var(--foreground);
+  font-family: var(--font-clash), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.legal-prose p {
+  line-height: 1.75;
+}
+
+.legal-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-prose a:hover {
+  color: var(--accent-light);
 }

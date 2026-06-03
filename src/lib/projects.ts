@@ -5,6 +5,9 @@ export interface Project {
   subtitleDe?: string;
   description: string;
   descriptionDe?: string;
+  /** Concrete capabilities / what was built — rendered as a bulleted highlight list on the detail page. */
+  features?: string[];
+  featuresDe?: string[];
   image: string;
   screenshots?: string[];
   tags: string[];
@@ -12,9 +15,22 @@ export interface Project {
   year: string;
   url?: string;
   status?: "private";
-  category: "web" | "app" | "tool";
+  /** Industry segment — used to surface automotive/PDR work on the /auto landing page. */
+  industry?: "automotive";
+  category: "web" | "app";
   featured: boolean;
 }
+
+// Short, human-friendly label for the project type — drives the Website/App
+// badge on project cards. Same word reads fine in EN and DE for most, so we
+// keep a per-locale map for the one that differs.
+export const CATEGORY_LABELS: Record<
+  Project["category"],
+  { en: string; de: string }
+> = {
+  web: { en: "Website", de: "Website" },
+  app: { en: "App", de: "App" },
+};
 
 export const projects: Project[] = [
   // === Featured (in display order) ===
@@ -24,9 +40,25 @@ export const projects: Project[] = [
     subtitle: "AI-Powered Keto Diet Companion",
     subtitleDe: "KI-gestützter Begleiter für die Keto-Diät",
     description:
-      "A personal web app — desktop and mobile — built to make starting and sticking to a Keto diet effortless. Snap a photo of any meal and Keto Coach instantly tells you whether it fits the diet, what to avoid, and the macro breakdown — all contextualized against your daily targets. Get tailored breakfast, lunch, dinner, or snack ideas based on what's left in your fridge and your remaining macro headroom. Log meals with auto-estimated calories, net carbs, protein, and fat, then track gains, achievements, and weekly progress. When the scale stalls, the 'Diagnose my week' tool reviews your last 7 days and ranks the most likely causes with concrete next steps. Currently a private app — built for myself, but I may open it up if there's interest.",
+      "A smart AI companion for the Keto diet. It logs your weight and meals every day and tracks your progress over time — and it can analyse a photo of any food to instantly reveal its nutritional data, then add it straight to your daily diet if you eat it. Genuinely smart and informative for anyone living keto. Available on request.",
     descriptionDe:
-      "Eine persönliche Web-App — für Desktop und mobile Geräte —, die ich entwickelt habe, um den Einstieg in die Keto-Diät und das Durchhalten so einfach wie möglich zu machen. Ein Foto deiner Mahlzeit reicht — Keto Coach sagt dir sofort, ob das Essen zur Diät passt, welche Bestandteile zu meiden sind, und liefert die Makro-Aufschlüsselung, alles im Kontext deiner Tageswerte. Erhalte massgeschneiderte Ideen für Frühstück, Mittag- oder Abendessen sowie Snacks, basierend auf dem Inhalt deines Kühlschranks und deinem verbleibenden Makro-Spielraum. Erfasse Mahlzeiten mit automatisch geschätzten Kalorien, Netto-Kohlenhydraten, Protein und Fett und verfolge Fortschritte, Erfolge und Wochenstatistiken. Wenn die Waage stillsteht, analysiert das «Woche diagnostizieren»-Tool deine letzten 7 Tage und priorisiert die wahrscheinlichsten Ursachen mit konkreten Schritten. Derzeit eine private App — für mich selbst entwickelt, bei Interesse möglicherweise öffentlich zugänglich.",
+      "Ein smarter KI-Begleiter für die Keto-Diät. Die App erfasst täglich Gewicht und Mahlzeiten und verfolgt deinen Fortschritt. Sie analysiert das Foto beliebiger Speisen, zeigt sofort deren Nährwerte an und fügt sie bei Verzehr automatisch deiner Tagesbilanz hinzu. Smart und informativ für alle, die Keto leben. Auf Anfrage verfügbar.",
+    features: [
+      "AI food-photo analysis",
+      "Instant nutritional data",
+      "Auto-adds eaten meals to your log",
+      "Daily weight & meal tracking",
+      "Progress tracking over time",
+      "Smart meal suggestions",
+    ],
+    featuresDe: [
+      "KI-Foto-Analyse von Speisen",
+      "Sofortige Nährwerte",
+      "Verzehrtes wird automatisch erfasst",
+      "Tägliches Gewichts- & Mahlzeiten-Tracking",
+      "Fortschritt über die Zeit",
+      "Smarte Mahlzeitvorschläge",
+    ],
     image: "/images/keto/dash.jpg",
     screenshots: [
       "/images/keto/dash.jpg",
@@ -52,12 +84,30 @@ export const projects: Project[] = [
     subtitle: "Japanese PDR Expo",
     subtitleDe: "Japanische PDR-Messe",
     description:
-      "Web platform for the Japanese edition of the international PDR expo, with bilingual content and event schedules for the Asian market. Goes well beyond a marketing site: it handles ticket sales, sponsorship packages, and exhibitor and champion registrations end-to-end. The ticketing system issues attendees with wallet tickets that can be scanned at the event reception, while every item sold online — from sponsorship slots to add-ons — is tracked against a global stock count so nothing is oversold.",
+      "A full-stack event platform for the Japanese PDR expo — handling ticket sales, sponsorships, and exhibitor registrations end-to-end. Built for conversion, bilingual from the ground up, and ready to scale across the Asian market.",
     descriptionDe:
-      "Webplattform für die japanische Ausgabe der internationalen PDR-Messe, mit zweisprachigen Inhalten und Veranstaltungsplänen für den asiatischen Markt. Geht weit über eine reine Marketing-Site hinaus: Sie wickelt Ticketverkauf, Sponsoring-Pakete sowie Aussteller- und Champion-Registrierungen vollständig ab. Das Ticketsystem stellt Besuchern Wallet-Tickets aus, die am Empfang gescannt werden können — und jeder online verkaufte Artikel, von Sponsoring-Slots bis zu Zusatzposten, wird gegen einen globalen Lagerbestand geführt, damit nichts überverkauft wird.",
+      "Eine vollständige Event-Plattform für die japanische PDR-Expo — mit Ticketverkauf, Sponsoring und Ausstellerregistrierung von A bis Z. Konversionsstark, zweisprachig und auf den asiatischen Markt ausgerichtet.",
+    features: [
+      "Online ticketing with conditional forms",
+      "Countdown-gated booking regions",
+      "Stock-controlled merch sales",
+      "Automated payments for tickets, exhibitors & sponsors",
+      "Scannable wallet tickets at reception",
+      "Bilingual (Japanese / English)",
+      "SEO-optimised, high-conversion design",
+    ],
+    featuresDe: [
+      "Online-Ticketing mit bedingten Formularen",
+      "Countdown-gesteuerte Buchungsregionen",
+      "Lagergesteuerter Merchandise-Verkauf",
+      "Automatisierte Zahlungen für Tickets, Aussteller & Sponsoren",
+      "Scanbare Wallet-Tickets am Empfang",
+      "Zweisprachig (Japanisch / Englisch)",
+      "SEO-optimiertes, konversionsstarkes Design",
+    ],
     image: "/images/iasre-japan.jpg",
-    tags: ["Events", "International", "PDR"],
-    tagsDe: ["Veranstaltungen", "International", "PDR"],
+    tags: ["Online Ticketing", "Registration Countdown", "E-Commerce"],
+    tagsDe: ["Online-Ticketing", "Anmelde-Countdown", "E-Commerce"],
     year: "2026",
     url: "https://www.iasre-japan.com/",
     category: "web",
@@ -69,12 +119,28 @@ export const projects: Project[] = [
     subtitle: "Product Website for PDR Software",
     subtitleDe: "Produktwebsite für PDR-Software",
     description:
-      "Marketing website for PDR Kalk — a damage assessment and invoicing application for PDR technicians. Showcases features, screenshots, pricing, and multi-language support. Built to convert visitors into licensed users. Alongside the website, I built the underlying professional estimating software package itself — a full damage-assessment and invoicing suite that runs on Windows and Android devices for PDR technicians in the field.",
+      "A conversion-focused product website for PDR Kalk — the damage-assessment and invoicing app built for PDR technicians. Dieter designed and built both the software and the site that sells it.",
     descriptionDe:
-      "Marketingwebsite für PDR Kalk — eine Schadenskalkulations- und Rechnungsanwendung für PDR-Techniker. Präsentiert Funktionen, Screenshots, Preise und Mehrsprachigkeit. Entwickelt, um Besucher in lizenzierte Nutzer zu verwandeln. Neben der Website habe ich auch das zugrunde liegende professionelle Kalkulationssoftware-Paket selbst entwickelt — eine komplette Lösung für Schadenskalkulation und Rechnungsstellung, die auf Windows- und Android-Geräten für PDR-Techniker im Einsatz läuft.",
+      "Eine conversionstarke Produktwebsite für PDR Kalk — die Schadensbewertungs- und Rechnungs-App für PDR-Techniker. Dieter hat sowohl die Software als auch die Website, die sie verkauft, konzipiert und gebaut.",
+    features: [
+      "Damage assessment & invoicing app",
+      "Windows + Android versions",
+      "Multi-language support",
+      "Pricing & licensing showcase",
+      "Screenshot-driven feature presentation",
+      "Built to convert visitors to users",
+    ],
+    featuresDe: [
+      "Schadensbewertung & Rechnungsstellung",
+      "Windows + Android Versionen",
+      "Mehrsprachige Unterstützung",
+      "Preise & Lizenzen präsentiert",
+      "Screenshot-gestützte Funktionsdarstellung",
+      "Auf Conversion optimiert",
+    ],
     image: "/images/pdrkalkweb.jpg",
-    tags: ["Web Design", "Product Page", "PDR"],
-    tagsDe: ["Webdesign", "Produktseite", "PDR"],
+    tags: ["Web Design", "Digital Product", "Multi-Language"],
+    tagsDe: ["Webdesign", "Digitales Produkt", "Mehrsprachig"],
     year: "2026",
     url: "https://www.pdrkalk.com",
     category: "web",
@@ -86,15 +152,29 @@ export const projects: Project[] = [
     subtitle: "E-Commerce Platform",
     subtitleDe: "E-Commerce-Plattform",
     description:
-      "Specialized e-commerce platform for paintless dent repair tools and equipment. Features product catalog, secure checkout, and inventory management.",
+      "Swiss PDR Tools is a full e-commerce platform built to sell paintless dent repair equipment worldwide — from product catalog to secure checkout and professional invoicing, everything runs on custom-built infrastructure.",
     descriptionDe:
-      "Spezialisierte E-Commerce-Plattform für Werkzeuge und Ausrüstung zur lackschadenfreien Dellenreparatur. Mit Produktkatalog, sicherem Checkout und Lagerverwaltung.",
+      "Swiss PDR Tools ist eine vollständige E-Commerce-Plattform für den weltweiten Verkauf von Ausbeulwerkzeug — vom Produktkatalog bis zur sicheren Kasse und professioneller Rechnungsstellung, alles auf massgeschneiderter Infrastruktur.",
+    features: [
+      "Worldwide e-commerce sales",
+      "Weight-based shipping options",
+      "Inventory & stock control",
+      "Custom invoice generation plugin",
+      "Secure checkout",
+    ],
+    featuresDe: [
+      "Weltweiter Online-Verkauf",
+      "Gewichtsbasierte Versandoptionen",
+      "Lager- und Bestandskontrolle",
+      "Massgeschneidertes Rechnungs-Plugin",
+      "Sichere Kasse",
+    ],
     image: "/images/pdrtools.jpg",
-    tags: ["E-Commerce", "Inventory", "Payments"],
-    tagsDe: ["E-Commerce", "Lagerverwaltung", "Zahlungen"],
+    tags: ["Web Design", "E-Commerce", "Payments"],
+    tagsDe: ["Webdesign", "E-Commerce", "Zahlungen"],
     year: "2023",
     url: "https://www.pdrtools.com/",
-    category: "tool",
+    category: "web",
     featured: true,
   },
   {
@@ -103,12 +183,24 @@ export const projects: Project[] = [
     subtitle: "Educational Math App",
     subtitleDe: "Lern-App für Mathematik",
     description:
-      "An interactive mathematics learning application designed to make math education engaging and accessible. Features adaptive difficulty, progress tracking, and gamified learning experiences.",
+      "Mathe Meister is an interactive math learning app built for schools — ad-free, adaptive, and designed to make students want to practise. Gamified progress keeps learners engaged while teachers stay in control.",
     descriptionDe:
-      "Eine interaktive Mathematik-Lernapp, die Matheunterricht spannend und zugänglich macht. Mit adaptivem Schwierigkeitsgrad, Fortschrittsverfolgung und spielerischem Lernerlebnis.",
+      "Mathe Meister ist eine interaktive Mathe-Lern-App für Schulen — werbefrei, adaptiv und so gestaltet, dass Schülerinnen und Schüler freiwillig üben. Gamifizierte Fortschritte halten die Motivation hoch.",
+    features: [
+      "Adaptive difficulty levels",
+      "Progress tracking",
+      "Gamified learning",
+      "Ad-free school environment",
+    ],
+    featuresDe: [
+      "Adaptive Schwierigkeitsgrade",
+      "Fortschritts-Tracking",
+      "Gamifiziertes Lernen",
+      "Werbefreie Schulumgebung",
+    ],
     image: "/images/app-mathe-meister.jpg",
-    tags: ["Mobile App", "Education", "Gamification"],
-    tagsDe: ["Mobile App", "Bildung", "Gamification"],
+    tags: ["Used in Schools", "No Ads", "Education"],
+    tagsDe: ["In Schulen im Einsatz", "Werbefrei", "Bildung"],
     year: "2024",
     url: "https://meister.sappy.ch/",
     category: "app",
@@ -120,9 +212,21 @@ export const projects: Project[] = [
     subtitle: "Paintless Dent Repair Service",
     subtitleDe: "Lackschadenfreie Dellenreparatur",
     description:
-      "Professional web presence for a paintless dent repair specialist. Showcasing services, expertise, and customer results with a clean, conversion-focused design.",
+      "Clever-Ausbeulen needed a web presence that converts visitors into customers — so we built one around their expertise and real results. Clean, focused design that turns a specialist service into an easy yes.",
     descriptionDe:
-      "Professioneller Webauftritt für einen Spezialisten für lackschadenfreie Dellenreparatur. Präsentation von Dienstleistungen, Fachwissen und Kundenergebnissen mit klarem, konversionsorientiertem Design.",
+      "Clever-Ausbeulen brauchte einen Webauftritt, der Besucher zu Kunden macht — darum haben wir ihn konsequent auf ihre Expertise und echte Resultate ausgerichtet. Klares, fokussiertes Design, das aus einem Spezialangebot ein einfaches Ja macht.",
+    features: [
+      "Conversion-focused service showcase",
+      "Expertise & results presentation",
+      "Clean, professional design",
+      "Mobile-ready layout",
+    ],
+    featuresDe: [
+      "Conversion-fokussierte Leistungsdarstellung",
+      "Expertise- & Ergebnispräsentation",
+      "Klares, professionelles Design",
+      "Mobil-optimiertes Layout",
+    ],
     image: "/images/clever.jpg",
     tags: ["Web Design", "Service Business", "PDR"],
     tagsDe: ["Webdesign", "Dienstleistung", "PDR"],
@@ -137,9 +241,21 @@ export const projects: Project[] = [
     subtitle: "Auto Body Repair Service",
     subtitleDe: "Karosseriereparatur-Service",
     description:
-      "Digital presence for a premium auto body repair service specializing in paintless dent removal. Features before/after galleries, online quoting, and service area coverage.",
+      "A conversion-focused website for a premium paintless dent removal service — built to turn local search traffic into booked jobs.",
     descriptionDe:
-      "Digitaler Auftritt für einen Premium-Karosseriereparatur-Service, spezialisiert auf lackschadenfreie Dellenentfernung. Mit Vorher/Nachher-Galerien, Online-Offerten und Einzugsgebiet-Übersicht.",
+      "Eine conversion-starke Website für einen Premium-Autoausbeul-Service — gebaut, um lokalen Suchverkehr in gebuchte Aufträge zu verwandeln.",
+    features: [
+      "Before/after gallery",
+      "Online quote request",
+      "Service-area coverage",
+      "SEO-optimised structure",
+    ],
+    featuresDe: [
+      "Vorher/Nachher-Galerie",
+      "Online-Offertanfrage",
+      "Servicegebiet-Übersicht",
+      "SEO-optimierte Struktur",
+    ],
     image: "/images/autoausbeulen.jpg",
     tags: ["Web Design", "Service Business", "SEO"],
     tagsDe: ["Webdesign", "Dienstleistung", "SEO"],
@@ -154,9 +270,21 @@ export const projects: Project[] = [
     subtitle: "Father & Son Arcade Project",
     subtitleDe: "Vater-Sohn-Arcade-Projekt",
     description:
-      "A retro-style browser game built together with my son. Best experienced on tablets or desktop — load it up and jump straight in. A fun side project blending nostalgia with modern web tech.",
+      "A retro arcade game built with my son — load it in your browser and play instantly, no install needed. Proof that modern web tech can deliver genuine nostalgia.",
     descriptionDe:
-      "Ein Retro-Browserspiel, das ich zusammen mit meinem Sohn entwickelt habe. Am besten auf Tablets oder Desktop — einfach laden und losspielen. Ein Spassprojekt, das Nostalgie mit moderner Webtechnologie verbindet.",
+      "Ein Retro-Arcade-Game, das ich gemeinsam mit meinem Sohn gebaut habe — im Browser laden und sofort spielen, ohne Installation. Modernes Web-Handwerk im Dienst echter Nostalgie.",
+    features: [
+      "Instant browser-based play",
+      "Tablet & desktop optimised",
+      "Retro arcade aesthetic",
+      "Zero install, zero friction",
+    ],
+    featuresDe: [
+      "Sofort im Browser spielbar",
+      "Optimiert für Tablet & Desktop",
+      "Klassisches Arcade-Design",
+      "Kein Install, kein Aufwand",
+    ],
     image: "/images/kidapp.jpg",
     tags: ["Game", "Retro", "Browser"],
     tagsDe: ["Spiel", "Retro", "Browser"],
@@ -171,9 +299,23 @@ export const projects: Project[] = [
     subtitle: "Continent & Ocean Quiz for Kids",
     subtitleDe: "Kontinente- & Ozeane-Quiz für Kinder",
     description:
-      "A playful educational app built for my daughter to prepare for her continent test. Kids explore an interactive world map, discover fun facts about all continents and oceans, then test their knowledge in a quiz to earn points and climb the highscore. No ads — free for all kids.",
+      "A no-ads educational app built for real kids, not ad networks. Explore an interactive world map, discover continent and ocean facts, then prove it in a scored quiz.",
     descriptionDe:
-      "Eine spielerische Lern-App, die ich für meine Tochter entwickelt habe, um sich auf ihren Kontinente-Test vorzubereiten. Kinder erkunden eine interaktive Weltkarte, entdecken spannende Fakten über alle Kontinente und Ozeane und testen ihr Wissen im Quiz, um Punkte zu sammeln und in die Highscore-Liste aufzusteigen. Keine Werbung — kostenlos für alle Kinder.",
+      "Eine werbefreie Lern-App, gebaut für echte Kinder. Kontinente und Ozeane auf einer interaktiven Weltkarte entdecken, Fakten lernen und im Quiz Punkte sammeln.",
+    features: [
+      "Interactive world map",
+      "Continent & ocean facts",
+      "Knowledge quiz with scoring",
+      "Highscore leaderboard",
+      "Zero ads, free for kids",
+    ],
+    featuresDe: [
+      "Interaktive Weltkarte",
+      "Fakten zu Kontinenten & Ozeanen",
+      "Wissensquiz mit Punkten",
+      "Highscore-Rangliste",
+      "Werbefrei und kostenlos",
+    ],
     image: "/images/weltmeister.jpg",
     tags: ["Education", "Kids", "Quiz", "Free"],
     tagsDe: ["Bildung", "Kinder", "Quiz", "Kostenlos"],
@@ -189,9 +331,27 @@ export const projects: Project[] = [
     subtitle: "Damage Assessment & Invoicing Software",
     subtitleDe: "Schadenskalkulation & Rechnungssoftware",
     description:
-      "A desktop application built for PDR technicians to digitalise hail and parking damage estimates, work reports, and invoicing. Features live calculations based on Swiss insurance matrices, batch invoicing, photo integration into PDF reports, address book management, and multi-language support (DE/FR/IT/EN). Fully offline with local data storage — no cloud, no subscription required. Built to save 30–60 minutes per job.",
+      "PDR Kalk turns hail and parking-damage jobs into finished invoices in minutes — not hours. A fully offline desktop app built around Swiss insurance matrices, so PDR technicians spend time on cars, not paperwork.",
     descriptionDe:
-      "Eine Desktop-Anwendung für PDR-Techniker zur Digitalisierung von Hagel- und Parkschadenkalkulationen, Arbeitsberichten und Rechnungen. Mit Live-Berechnungen basierend auf Schweizer Versicherungsmatrizen, Sammelrechnungen, Fotointegration in PDF-Berichte, Adressverwaltung und Mehrsprachigkeit (DE/FR/IT/EN). Vollständig offline mit lokaler Datenspeicherung — kein Cloud-Abo nötig. Spart 30–60 Minuten pro Auftrag.",
+      "PDR Kalk verwandelt Hagel- und Parkschäden in wenigen Minuten in fertige Rechnungen. Die vollständig offline nutzbare Desktop-App basiert auf Schweizer Versicherungsmatrizen — damit Techniker Zeit am Auto statt am Schreibtisch verbringen.",
+    features: [
+      "Swiss insurance matrix calculations",
+      "Batch invoicing",
+      "Photo integration in PDF reports",
+      "Address-book management",
+      "Multi-language (DE/FR/IT/EN)",
+      "Fully offline — no subscription",
+      "Saves 30–60 min per job",
+    ],
+    featuresDe: [
+      "Schweizer Versicherungsmatrizen live",
+      "Sammelrechnungen auf Knopfdruck",
+      "Fotos direkt in PDF-Berichte",
+      "Adressbuchverwaltung integriert",
+      "Mehrsprachig (DE/FR/IT/EN)",
+      "Vollständig offline — kein Abo",
+      "30–60 Min. Ersparnis pro Auftrag",
+    ],
     image: "/images/pdrkalkapp.jpg",
     tags: ["Desktop App", "PDR", "Invoicing", "Swiss Insurance"],
     tagsDe: ["Desktop-App", "PDR", "Rechnungsstellung", "Schweizer Versicherung"],
@@ -206,9 +366,21 @@ export const projects: Project[] = [
     subtitle: "Professional Dent Repair Platform",
     subtitleDe: "Professionelle Dellenreparatur-Plattform",
     description:
-      "A comprehensive web platform for a professional paintless dent repair service. Built with modern web technologies featuring booking systems, service showcases, and customer management.",
+      "A complete web platform built for a professional paintless dent repair business — showcasing services, capturing bookings, and managing customers in one place.",
     descriptionDe:
-      "Eine umfassende Webplattform für einen professionellen Dellenreparatur-Service. Mit modernen Webtechnologien, Buchungssystem, Leistungsübersicht und Kundenverwaltung.",
+      "Eine vollständige Web-Plattform für einen professionellen Beulendoktor-Betrieb — mit Service-Präsentation, Online-Buchung und Kundenverwaltung an einem Ort.",
+    features: [
+      "Online booking system",
+      "Service showcase",
+      "Customer management",
+      "Professional service platform",
+    ],
+    featuresDe: [
+      "Online-Buchungssystem",
+      "Service-Präsentation",
+      "Kundenverwaltung",
+      "Professionelle Serviceplattform",
+    ],
     image: "/images/masterfixpdr.jpg",
     tags: ["Web Development", "Booking System", "CMS"],
     tagsDe: ["Webentwicklung", "Buchungssystem", "CMS"],
@@ -223,9 +395,21 @@ export const projects: Project[] = [
     subtitle: "Australian PDR Website",
     subtitleDe: "Australische PDR-Website",
     description:
-      "Professional web platform for an Australian paintless dent repair service. Features service showcases, booking integration, and regional targeting for the Australian market.",
+      "A professional web platform built to win local paintless dent repair jobs across Australia — service showcases, booking integration, and regional targeting all in one.",
     descriptionDe:
-      "Professionelle Webplattform für einen australischen Dellenreparatur-Service. Mit Leistungsübersicht, Buchungsintegration und regionaler Ausrichtung auf den australischen Markt.",
+      "Eine professionelle Web-Plattform, die Aufträge für australischen Paintless Dent Repair gewinnt — mit Service-Übersichten, Buchungsintegration und regionalem Targeting.",
+    features: [
+      "Service showcase & portfolio",
+      "Online booking integration",
+      "Australian regional targeting",
+      "Mobile-optimised layout",
+    ],
+    featuresDe: [
+      "Service-Showcase & Portfolio",
+      "Online-Buchungsintegration",
+      "Regionales Targeting Australien",
+      "Mobil-optimiertes Layout",
+    ],
     image: "/images/dentag.jpg",
     tags: ["Web Design", "PDR", "International"],
     tagsDe: ["Webdesign", "PDR", "International"],
@@ -240,9 +424,21 @@ export const projects: Project[] = [
     subtitle: "Swiss PDR Specialist",
     subtitleDe: "Schweizer PDR-Spezialist",
     description:
-      "Professional web presence for a Swiss paintless dent repair specialist. Clean, modern design showcasing expert craftsmanship and precision repair services.",
+      "Sciuto Drücktechnik needed a web presence that earns trust before the phone rings. The result: a sharp, modern site that puts Swiss precision and craftsmanship front and center.",
     descriptionDe:
-      "Professioneller Webauftritt für einen Schweizer Spezialisten für lackschadenfreie Dellenreparatur. Klares, modernes Design mit Fokus auf Handwerkskunst und Präzisionsreparatur.",
+      "Sciuto Drücktechnik brauchte einen Webauftritt, der Vertrauen weckt, bevor das Telefon klingelt. Das Ergebnis: eine klare, moderne Website, die Schweizer Präzision und Handwerkskunst in den Vordergrund stellt.",
+    features: [
+      "Clean, conversion-focused design",
+      "Expert craftsmanship showcased",
+      "Precision repair services highlighted",
+      "Modern Swiss PDR web presence",
+    ],
+    featuresDe: [
+      "Klares, konversionsorientiertes Design",
+      "Handwerkskunst im Mittelpunkt",
+      "Präzisionsreparaturen überzeugend präsentiert",
+      "Moderner Webauftritt für Schweizer PDR",
+    ],
     image: "/images/sciuto.jpg",
     tags: ["Web Design", "PDR", "Swiss"],
     tagsDe: ["Webdesign", "PDR", "Schweiz"],
@@ -257,9 +453,21 @@ export const projects: Project[] = [
     subtitle: "Swiss PDR Specialist",
     subtitleDe: "Schweizer PDR-Spezialist",
     description:
-      "Corporate website for a Swiss paintless dent repair specialist. Modern aesthetics with clear communication of services and conversion optimization.",
+      "Strähl Drücktechnik needed a website that works as hard as their technicians. The result: a modern corporate site built to turn first-time visitors into booked customers.",
     descriptionDe:
-      "Firmenwebsite für einen Schweizer Spezialisten für lackschadenfreie Dellenreparatur. Modernes Design mit klarer Leistungskommunikation und Konversionsoptimierung.",
+      "Strähl Drücktechnik brauchte eine Website, die so hart arbeitet wie ihre Techniker. Das Ergebnis: ein moderner Firmenauftritt, der Erstbesucher in gebuchte Kunden verwandelt.",
+    features: [
+      "Modern corporate web presence",
+      "Clear service communication",
+      "Conversion-optimised layout",
+      "Clean, professional aesthetics",
+    ],
+    featuresDe: [
+      "Moderner Firmenauftritt",
+      "Klare Leistungskommunikation",
+      "Konversionsoptimiertes Layout",
+      "Klares, professionelles Design",
+    ],
     image: "/images/straehl.jpg",
     tags: ["Corporate", "Web Design", "PDR"],
     tagsDe: ["Firmenpräsenz", "Webdesign", "PDR"],
@@ -274,9 +482,23 @@ export const projects: Project[] = [
     subtitle: "The Biggest PDR Expo in EU",
     subtitleDe: "Die grösste PDR-Messe in der EU",
     description:
-      "Web platform for Europe's largest paintless dent repair expo and trade show. Multi-language support with event management, exhibitor showcases, and registration features.",
+      "Europe's largest PDR trade show needed a web platform worthy of its scale — so we built one. Event management, exhibitor showcases, and multi-language registration, all in one place.",
     descriptionDe:
-      "Webplattform für Europas grösste Messe für lackschadenfreie Dellenreparatur. Mehrsprachig mit Eventmanagement, Ausstellerpräsentationen und Anmeldefunktionen.",
+      "Europas grösste PDR-Messe brauchte eine Webplattform auf ihrem Niveau — also haben wir eine gebaut. Eventmanagement, Ausstellerpräsentationen und mehrsprachige Anmeldung, alles an einem Ort.",
+    features: [
+      "Europe's largest PDR expo",
+      "Exhibitor showcase pages",
+      "Event registration system",
+      "Multi-language support",
+      "Trade show event management",
+    ],
+    featuresDe: [
+      "Grösste PDR-Messe Europas",
+      "Ausstellerpräsentationen",
+      "Veranstaltungsanmeldung",
+      "Mehrsprachige Oberfläche",
+      "Eventmanagement für Messen",
+    ],
     image: "/images/iasre.jpg",
     tags: ["Events", "Multi-language", "PDR"],
     tagsDe: ["Veranstaltungen", "Mehrsprachig", "PDR"],
@@ -291,9 +513,23 @@ export const projects: Project[] = [
     subtitle: "Luxury Property Showcase",
     subtitleDe: "Luxus-Immobilienpräsentation",
     description:
-      "An elegant single-property website for a luxury two-residence tropical estate in Hua Hin, Thailand. Features a cinematic hero section, property gallery, location guide, and booking inquiry system — designed to sell privacy, space, and lifestyle.",
+      "A cinematic showcase site for a luxury two-residence tropical estate in Hua Hin — built to turn browsers into booking inquiries.",
     descriptionDe:
-      "Eine elegante Einzelobjekt-Website für ein tropisches Luxusanwesen mit zwei Residenzen in Hua Hin, Thailand. Mit cinematischer Hero-Sektion, Immobiliengalerie, Standortführer und Buchungsanfrage — gestaltet, um Privatsphäre, Raum und Lifestyle zu verkaufen.",
+      "Eine cinematische Showcase-Website für ein luxuriöses Zwei-Residenz-Anwesen in Hua Hin — gebaut, um Interessenten zu Buchungsanfragen zu machen.",
+    features: [
+      "Cinematic hero section",
+      "Full property gallery",
+      "Location & lifestyle guide",
+      "Booking inquiry system",
+      "Privacy & space storytelling",
+    ],
+    featuresDe: [
+      "Cinematische Hero-Section",
+      "Vollständige Immobilien-Galerie",
+      "Standort- & Lifestyle-Guide",
+      "Buchungsanfrage-System",
+      "Privatsphäre & Raum im Fokus",
+    ],
     image: "/images/homehuahin.jpg",
     tags: ["Real Estate", "Web Design", "International"],
     tagsDe: ["Immobilien", "Webdesign", "International"],
@@ -308,9 +544,21 @@ export const projects: Project[] = [
     subtitle: "Damage Assessment Tool",
     subtitleDe: "Schadensbewertungs-Tool",
     description:
-      "An AI-powered damage assessment tool for automotive dent analysis. Upload photos and receive instant repair estimates.",
+      "What Dents? turns a smartphone photo into an instant repair estimate — no workshop visit needed. AI-powered dent analysis that gives automotive businesses and their customers answers in seconds.",
     descriptionDe:
-      "Ein KI-gestütztes Schadensbewertungs-Tool für die Analyse von Fahrzeugdellen. Fotos hochladen und sofort Reparaturkostenschätzungen erhalten.",
+      "What Dents? verwandelt ein Smartphone-Foto in eine sofortige Reparaturkostenschätzung — ohne Werkstattbesuch. KI-gestützte Delle-Analyse liefert Antworten in Sekunden.",
+    features: [
+      "Photo upload & instant analysis",
+      "AI-powered dent detection",
+      "Instant repair estimates",
+      "No workshop visit required",
+    ],
+    featuresDe: [
+      "Foto-Upload & Sofortanalyse",
+      "KI-gestützte Dellenerkennung",
+      "Sofortige Reparaturkostenschätzung",
+      "Kein Werkstattbesuch nötig",
+    ],
     image: "/images/whatdents.jpg",
     tags: ["AI", "Assessment", "Automotive"],
     tagsDe: ["KI", "Bewertung", "Automobil"],
@@ -325,9 +573,21 @@ export const projects: Project[] = [
     subtitle: "Professional Drycleaning",
     subtitleDe: "Professionelle Textilreinigung",
     description:
-      "Professional web presence for a dry cleaning service. Clean, modern design with service information, pricing, and location details.",
+      "A polished web presence built to turn local searches into booked drop-offs. ERNA's site puts services, pricing, and location front and centre — everything a customer needs to choose them.",
     descriptionDe:
-      "Professioneller Webauftritt für eine Textilreinigung. Klares, modernes Design mit Serviceinformationen, Preisen und Standortdetails.",
+      "Ein professioneller Webauftritt, der aus lokalen Suchanfragen Neukunden macht. Dienstleistungen, Preise und Standort — alles, was ein Kunde braucht, um sich für ERNA zu entscheiden.",
+    features: [
+      "Clean, modern design",
+      "Service overview & pricing",
+      "Location & contact details",
+      "Mobile-optimised layout",
+    ],
+    featuresDe: [
+      "Klares, modernes Design",
+      "Leistungsübersicht & Preise",
+      "Standort & Kontaktinfos",
+      "Mobil optimiertes Layout",
+    ],
     image: "/images/erna.jpg",
     tags: ["Web Design", "Service Business", "Local"],
     tagsDe: ["Webdesign", "Dienstleistung", "Lokal"],
@@ -344,4 +604,28 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured);
+}
+
+// Real, live automotive / PDR projects, curated and ordered for the /auto
+// landing proof row (strongest visual + most recognizable first). A curated
+// slug list keeps full control over which sites appear and in what order
+// without touching every project. Phase 2 may switch this to an
+// `industry === "automotive"` filter backed by a dedicated grid UI.
+const AUTOMOTIVE_SLUGS = [
+  "clever-ausbeulen",
+  "autoausbeulen",
+  "sciuto",
+  "straehl",
+  "masterfixpdr",
+  "dentag",
+  "iasre-japan",
+  "pdrtools",
+  "pdrkalk-website",
+  "whatdents",
+] as const;
+
+export function getAutomotiveProjects(): Project[] {
+  return AUTOMOTIVE_SLUGS.map((slug) =>
+    projects.find((p) => p.slug === slug)
+  ).filter((p): p is Project => Boolean(p));
 }

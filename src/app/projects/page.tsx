@@ -6,11 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { projects, type Project } from "@/lib/projects";
+import CategoryBadge from "@/components/CategoryBadge";
 import { I18nProvider, useI18n } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const categories = ["all", "web", "app", "tool"] as const;
+const categories = ["all", "web", "app"] as const;
 
 export default function ProjectsPage() {
   return (
@@ -69,7 +70,6 @@ function ProjectsPageContent() {
     all: t.projectsPage.categories.all,
     web: t.projectsPage.categories.web,
     app: t.projectsPage.categories.app,
-    tool: t.projectsPage.categories.tool,
   };
 
   return (
@@ -195,11 +195,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Category badge */}
-        <div className="absolute left-4 top-4">
-          <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs capitalize tracking-wider text-white/70 backdrop-blur-sm">
-            {project.category}
-          </span>
-        </div>
+        <CategoryBadge category={project.category} locale={locale} className="absolute left-4 top-4" />
       </div>
 
       {/* Content */}

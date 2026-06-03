@@ -171,6 +171,10 @@ export default function About() {
               {t.about.paragraph2}
             </p>
 
+            <p className="mt-6 text-lg leading-relaxed text-[var(--foreground)]">
+              {t.about.paragraph3}
+            </p>
+
             {/* Tech stack */}
             <div className="mt-10">
               <span className="text-xs tracking-[0.3em] uppercase text-[var(--accent)]">
@@ -182,12 +186,28 @@ export default function About() {
                   "CSS",
                   "JavaScript",
                   "Python",
-                  "Tailwind CSS",
-                  "React",
-                  "Node.js",
                   "SQL",
+                  "BASIC",
+                  "Pascal",
+                  "Flash",
+                  "React",
                   "Next.js",
+                  "Node.js",
+                  "Tailwind CSS",
+                  "WordPress",
+                  "Drupal",
+                  "Joomla",
                   "CMS",
+                  "GitHub",
+                  "Vercel",
+                  "Microsoft",
+                  "Networking",
+                  "OpenAI",
+                  "Anthropic",
+                  "AI Integration",
+                  "CAD",
+                  "Autodesk Fusion",
+                  "Blender",
                 ].map((tech) => (
                   <span
                     key={tech}
