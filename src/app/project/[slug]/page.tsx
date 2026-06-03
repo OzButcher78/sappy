@@ -215,8 +215,15 @@ function ProjectPageContent() {
       {/* Content */}
       <div className="mx-auto max-w-[900px] px-6 md:px-12">
         {/* Title */}
-        <div className="project-title -mt-20 relative z-10 opacity-0">
-          <div className="flex flex-wrap items-center gap-3">
+        <div className="project-title -mt-9 relative z-10 opacity-0">
+          <h1 className="font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            {project.title}
+          </h1>
+          <p className="mt-2 text-xl text-[var(--muted)]">
+            {locale === "de" && project.subtitleDe ? project.subtitleDe : project.subtitle}
+          </p>
+          {/* Tags sit below the title so they never overlap the hero image */}
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             {(locale === "de" && project.tagsDe ? project.tagsDe : project.tags).map((tag) => (
               <span
                 key={tag}
@@ -226,12 +233,6 @@ function ProjectPageContent() {
               </span>
             ))}
           </div>
-          <h1 className="mt-4 font-[family-name:var(--font-clash)] text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-            {project.title}
-          </h1>
-          <p className="mt-2 text-xl text-[var(--muted)]">
-            {locale === "de" && project.subtitleDe ? project.subtitleDe : project.subtitle}
-          </p>
         </div>
 
         {/* Meta */}
