@@ -205,7 +205,7 @@ function ProjectPageContent() {
           src={project.image}
           alt={project.title}
           fill
-          className="project-hero-image object-cover opacity-0"
+          className="project-hero-image object-cover object-left-top opacity-0"
           priority
           sizes="100vw"
         />

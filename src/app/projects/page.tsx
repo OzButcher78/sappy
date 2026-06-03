@@ -166,10 +166,10 @@ function ProjectCard({ project }: { project: Project }) {
       style={{ transform: "translateY(0)" }}
     >
       {/* Meta strip — pills sit on the card surface, never over the image */}
-      <div className="flex items-center justify-between gap-3 px-4 pt-4 pb-3">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 pt-4 pb-3">
         <CategoryBadge category={project.category} locale={locale} />
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-2">
           {project.url ? (
             <span className="flex items-center gap-1.5 rounded-full border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-1 text-xs tracking-wider text-emerald-400">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
